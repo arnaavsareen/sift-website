@@ -1,4 +1,4 @@
-# SIFT — AI for Factory Precision
+# SIFT.
 
 ![SIFT Logo](images/SIFT_logo.png)
 
