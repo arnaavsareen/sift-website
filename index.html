@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIFT — AI for Factory Precision</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --tan: #CEC5B0;
+      --sage: #65704F;
+      --white: #FFFFFF;
+      --charcoal: #2B3933;
+      --cream: #F7E6CA;
+      --brown: #271b09; 
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      margin: 0;
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--charcoal);
+      color: var(--white);
+      position: relative;
+      transition: background 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    canvas#bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 4.5rem);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      font-size: clamp(1.2rem, 3vw, 1.4rem);
+      line-height: 1.6;
+      color: var(--tan);
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+    }
+
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .countdown-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 100px;
+    }
+
+    .countdown-number {
+      background: rgba(247, 230, 202, 0.1);
+      border: 2px solid var(--cream);
+      border-radius: 16px;
+      padding: 1.5rem;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--cream);
+      min-width: 100px;
+      transition: transform 0.3s ease, background 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .countdown-number:hover {
+      transform: translateY(-5px);
+      background: rgba(247, 230, 202, 0.15);
+    }
+
+    .countdown-label {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--tan);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .cta-section {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--cream);
+    }
+
+    .cta-section p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--tan);
+      max-width: 600px;
+      margin: 0 auto 1.5rem auto;
+      line-height: 1.5;
+    }
+
+    .email-signup {
+      margin-top: 1.5rem;
+    }
+
+    button {
+      background-color: var(--sage);
+      color: var(--white);
+      border: none;
+      padding: 1.2rem 2.5rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    button:hover {
+      background-color: var(--cream);
+      color: var(--charcoal);
+      transform: scale(1.08);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: var(--cream);
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .countdown-box {
+        min-width: 80px;
+      }
+      .countdown-number {
+        min-width: 80px;
+        padding: 1rem;
+      }
+      .container {
+        padding: 3rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .countdown-box {
+        min-width: 60px;
+      }
+      .countdown-number {
+        min-width: 60px;
+        padding: 0.8rem;
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="bgCanvas"></canvas>
+
+  <div class="container">
+    <h1>SIFT.</h1>
+    <p><strong>Real-time compliance, cost control, and cycle-time clarity—on every line.</strong></p>
+
+    <div class="countdown-container">
+      <div class="countdown-box">
+        <div class="countdown-number" id="days">--</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="hours">--</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="minutes">--</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="seconds">--</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+
+    <section class="cta-section">
+      <h2>Are you a manufacturer?</h2>
+      <p>We are onboarding forward-thinking factories to pilot SIFT. Reach out and join the next generation of production.</p>
+    </section>
+
+    <div class="email-signup">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdrLDoALahLheN2Nv8RSbJsdiyVLuI_oSP991RbTWCxGlAXzA/viewform" target="_blank">
+        <button type="button">Contact Us</button>
+      </a>
+    </div>
+
+    <footer>
+      © 2025 SIFT Technologies Inc. | Built for smart factories.
+    </footer>
+  </div>
+
+  <script>
+    // Countdown Timer with Animation
+    const launchDate = new Date('2025-06-01T00:00:00');
+    
+    function animateValue(element, start, end, duration) {
+      if (isNaN(start)) start = 0;
+      if (isNaN(end)) end = 0;
+      
+      const range = end - start;
+      const increment = range / (duration / 16);
+      let current = start;
+      
+      const animate = () => {
+        current += increment;
+        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+          element.textContent = end;
+          return;
+        }
+        element.textContent = Math.round(current);
+        requestAnimationFrame(animate);
+      };
+      
+      animate();
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = launchDate - now;
+      
+      if (diff <= 0) {
+        document.querySelector('.countdown-container').innerHTML = '<h2>We are live!</h2>';
+        return;
+      }
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      
+      const daysElement = document.getElementById('days');
+      const hoursElement = document.getElementById('hours');
+      const minutesElement = document.getElementById('minutes');
+      const secondsElement = document.getElementById('seconds');
+      
+      const currentDays = parseInt(daysElement.textContent) || 0;
+      const currentHours = parseInt(hoursElement.textContent) || 0;
+      const currentMinutes = parseInt(minutesElement.textContent) || 0;
+      const currentSeconds = parseInt(secondsElement.textContent) || 0;
+      
+      if (currentDays !== days) animateValue(daysElement, currentDays, days, 500);
+      if (currentHours !== hours) animateValue(hoursElement, currentHours, hours, 500);
+      if (currentMinutes !== minutes) animateValue(minutesElement, currentMinutes, minutes, 500);
+      if (currentSeconds !== seconds) animateValue(secondsElement, currentSeconds, seconds, 500);
+    }
+    
+    // Initialize countdown immediately
+    updateCountdown();
+    // Update countdown every second
+    setInterval(updateCountdown, 1000);
+  </script>
+
+  <script>
+    // Background Animation
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    const nodes = Array.from({ length: 50 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--cream');
+      ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--tan');
+
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+
+        a.x += a.vx;
+        a.y += a.vy;
+
+        if (a.x < 0 || a.x > width) a.vx *= -1;
+        if (a.y < 0 || a.y > height) a.vy *= -1;
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+
+</body>
+</html>
