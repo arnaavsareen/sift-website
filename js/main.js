@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollAnimations();
     initializeIntersectionObserver();
     initializeMicroInteractions();
-    initializeAccessibility();
     
     console.log('🚀 SIFT website initialized with Y Combinator quality interactions');
 });
@@ -359,64 +358,7 @@ function createRippleEffect(event, element) {
     }, 600);
 }
 
-/**
- * Accessibility enhancements
- */
-function initializeAccessibility() {
-    // Skip to main content link
-    const skipLink = document.createElement('a');
-    skipLink.href = '#features';
-    skipLink.textContent = 'Skip to main content';
-    skipLink.className = 'skip-link';
-    skipLink.style.cssText = `
-        position: absolute;
-        top: -40px;
-        left: 6px;
-        background: var(--primary-green);
-        color: white;
-        padding: 8px 16px;
-        z-index: 1001;
-        text-decoration: none;
-        border-radius: 4px;
-        font-weight: 600;
-        transition: top 0.3s ease;
-    `;
-    
-    skipLink.addEventListener('focus', function() {
-        this.style.top = '6px';
-    });
-    
-    skipLink.addEventListener('blur', function() {
-        this.style.top = '-40px';
-    });
-    
-    document.body.insertBefore(skipLink, document.body.firstChild);
-    
-    // Enhanced keyboard navigation
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Tab') {
-            document.body.classList.add('keyboard-navigation');
-        }
-    });
-    
-    document.addEventListener('mousedown', function() {
-        document.body.classList.remove('keyboard-navigation');
-    });
-    
-    // Focus visible styles for keyboard navigation
-    const style = document.createElement('style');
-    style.textContent = `
-        .keyboard-navigation *:focus {
-            outline: 3px solid var(--primary-green);
-            outline-offset: 2px;
-        }
-        
-        .keyboard-navigation .btn:focus {
-            outline-color: white;
-        }
-    `;
-    document.head.appendChild(style);
-}
+
 
 /**
  * Analytics and tracking utilities
