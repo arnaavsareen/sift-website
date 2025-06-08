@@ -1,354 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SIFT — AI for Factory Precision</title>
-  <link rel="icon" type="image/png" href="images/icon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --tan: #CEC5B0;
-      --sage: #65704F;
-      --white: #FFFFFF;
-      --charcoal: #2B3933;
-      --cream: #F7E6CA;
-      --brown: #271b09; 
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      margin: 0;
-      font-family: 'Space Grotesk', sans-serif;
-      background: var(--charcoal);
-      color: var(--white);
-      position: relative;
-      transition: background 0.3s ease, color 0.3s ease;
-      overflow-x: hidden;
-    }
-
-    canvas#bgCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 4rem 2rem;
-      text-align: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    h1 {
-      font-size: clamp(3rem, 8vw, 4.5rem);
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-      line-height: 1.2;
-      color: var(--cream);
-      letter-spacing: -0.02em;
-    }
-
-    p {
-      font-size: clamp(1.2rem, 3vw, 1.4rem);
-      line-height: 1.6;
-      color: var(--tan);
-      max-width: 700px;
-      margin-bottom: 1.5rem;
-    }
-
-    .countdown-container {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 2rem 0;
-      flex-wrap: wrap;
-    }
-
-    .countdown-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 100px;
-    }
-
-    .countdown-number {
-      background: rgba(247, 230, 202, 0.1);
-      border: 2px solid var(--cream);
-      border-radius: 16px;
-      padding: 1.5rem;
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 700;
-      color: var(--cream);
-      min-width: 100px;
-      transition: transform 0.3s ease, background 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .countdown-number:hover {
-      transform: translateY(-5px);
-      background: rgba(247, 230, 202, 0.15);
-    }
-
-    .countdown-label {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: var(--tan);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .cta-section {
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .cta-section h2 {
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: var(--cream);
-    }
-
-    .cta-section p {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: var(--tan);
-      max-width: 600px;
-      margin: 0 auto 1.5rem auto;
-      line-height: 1.5;
-    }
-
-    .email-signup {
-      margin-top: 1.5rem;
-    }
-
-    button {
-      background-color: var(--sage);
-      color: var(--white);
-      border: none;
-      padding: 1.2rem 2.5rem;
-      font-size: 1.2rem;
-      font-weight: 700;
-      border-radius: 18px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    button:hover {
-      background-color: var(--cream);
-      color: var(--charcoal);
-      transform: scale(1.08);
-    }
-
-    footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: var(--cream);
-      text-align: center;
-      opacity: 0.8;
-    }
-
-    @media (max-width: 768px) {
-      .countdown-box {
-        min-width: 80px;
-      }
-      .countdown-number {
-        min-width: 80px;
-        padding: 1rem;
-      }
-      .container {
-        padding: 3rem 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .countdown-box {
-        min-width: 60px;
-      }
-      .countdown-number {
-        min-width: 60px;
-        padding: 0.8rem;
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIFT - AI-Powered Compliance for the Next Generation of Manufacturing</title>
+    <meta name="description" content="Enterprise-grade safety and compliance tools for small and mid-sized manufacturers. Transform reactive compliance into proactive prevention with AI-powered monitoring.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/SIFT_logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SIFT - AI-Powered Compliance for Manufacturing">
+    <meta property="og:description" content="Enterprise-grade safety and efficiency tools accessible to small and mid-sized manufacturers.">
+    <meta property="og:image" content="images/SIFT_logo.png">
+    <meta property="og:type" content="website">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
-
 <body>
-  <canvas id="bgCanvas"></canvas>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="images/SIFT_logo.png" alt="SIFT" class="logo-icon">
+                <span class="logo-text">SIFT</span>
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="solutions.html" class="nav-link">Solutions</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <a href="https://cal.com/founders-sift-qcxymj" class="btn btn-primary">
+                <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                    <path d="m9 16 2 2 4-4"></path>
+                </svg>
+                Book a Demo
+            </a>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
 
-  <div class="container">
-    <h1>SIFT.</h1>
-    <p><strong>Real-time compliance, cost control, and cycle-time clarity—on every line.</strong></p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Manufacturing Animation Background -->
+        <div class="manufacturing-animation">
+            <!-- Industrial Grid Background -->
+            <div class="industrial-grid"></div>
+            
+            <!-- Manufacturing & Safety Icons -->
+            <div class="floating-elements">
+                <!-- Safety & Compliance Icons -->
+                <div class="floating-element safety" data-speed="0.8">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="m9 12 2 2 4-4"/>
+                    </svg>
+                </div>
+                
+                <div class="floating-element safety" data-speed="1.1">
+                    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 11H5a2 2 0 00-2 2v7a2 2 0 002 2h14a2 2 0 002-2v-7a2 2 0 00-2-2h-4M9 11V9a3 3 0 116 0v2M9 11h6"/>
+                    </svg>
+                </div>
+                
+                <div class="floating-element safety" data-speed="0.9">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    </svg>
+                </div>
+                
+                <!-- Manufacturing Tools -->
+                <div class="floating-element tool" data-speed="0.7">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                </div>
+                
+                <div class="floating-element tool" data-speed="1.2">
+                    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M11 4.702a.705.705 0 0 0-.203-.503L6.246 1.248a.705.705 0 0 0-.994 0L2.301 4.199a.705.705 0 0 0 0 .994l4.95 4.95a.705.705 0 0 0 .994 0L11.1 7.292a.705.705 0 0 0 0-.994L11 4.702z"/>
+                        <path d="m7.5 6.5 9 9"/>
+                        <path d="M13.5 6.5a3 3 0 0 1 3 3"/>
+                        <path d="M18 12a3 3 0 0 1-3 3"/>
+                    </svg>
+                </div>
+                
+                <div class="floating-element tool" data-speed="1.0">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                </div>
+            </div>
+            
 
-    <div class="countdown-container">
-      <div class="countdown-box">
-        <div class="countdown-number" id="days">--</div>
-        <div class="countdown-label">Days</div>
-      </div>
-      <div class="countdown-box">
-        <div class="countdown-number" id="hours">--</div>
-        <div class="countdown-label">Hours</div>
-      </div>
-      <div class="countdown-box">
-        <div class="countdown-number" id="minutes">--</div>
-        <div class="countdown-label">Minutes</div>
-      </div>
-      <div class="countdown-box">
-        <div class="countdown-number" id="seconds">--</div>
-        <div class="countdown-label">Seconds</div>
-      </div>
-    </div>
-
-    <section class="cta-section">
-      <h2>Are you a manufacturer?</h2>
-      <p>We are onboarding forward-thinking factories to pilot SIFT. Reach out and join the next generation of production.</p>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title fade-in-up">
+                    <span class="text-green">AI-Powered</span> <span class="text-green">Compliance</span> for the Next Generation of Manufacturing
+                </h1>
+                
+                <p class="hero-subtitle fade-in-up">
+                    Enterprise-grade safety and compliance tools for small and mid-sized manufacturers
+                </p>
+                
+                <div class="hero-cta fade-in-up">
+                    <a href="https://cal.com/founders-sift-qcxymj" class="btn btn-primary btn-large">
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                            <path d="m9 16 2 2 4-4"></path>
+                        </svg>
+                        Book a Demo
+                    </a>
+                    
+                    <a href="#features" class="btn btn-secondary btn-large">
+                        Learn More
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <div class="email-signup">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdrLDoALahLheN2Nv8RSbJsdiyVLuI_oSP991RbTWCxGlAXzA/viewform" target="_blank">
-        <button type="button">Contact Us</button>
-      </a>
-    </div>
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in-up">Transform Your Factory Floor</h2>
+                <p class="section-subtitle fade-in-up">
+                    From reactive firefighting to proactive prevention
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Computer Vision Monitoring</h3>
+                    <ul class="feature-list">
+                        <li>Real-time video analysis</li>
+                        <li>Custom object detection</li>
+                        <li>Compliance rule engine</li>
+                        <li>Instant violation alerts</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">AI-Powered Analytics</h3>
+                    <ul class="feature-list">
+                        <li>Predictive maintenance</li>
+                        <li>Production optimization</li>
+                        <li>Quality trend analysis</li>
+                        <li>Performance benchmarking</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Automated Documentation</h3>
+                    <ul class="feature-list">
+                        <li>Compliance reporting</li>
+                        <li>Audit trail generation</li>
+                        <li>Regulatory requirement tracking</li>
+                        <li>Export capabilities</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Dashboard & Insights</h3>
+                    <ul class="feature-list">
+                        <li>Real-time KPI monitoring</li>
+                        <li>Historical trend analysis</li>
+                        <li>Custom alerts & notifications</li>
+                        <li>Mobile-responsive interface</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-      2025 SIFT Technologies | Built for smart factories.
+    <!-- Industries Section -->
+    <section class="section bg-subtle">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in-up">Built for Manufacturing Excellence</h2>
+                <p class="section-subtitle fade-in-up">
+                    Trusted by forward-thinking manufacturers across industries
+                </p>
+            </div>
+            
+            <div class="industries-grid">
+                <div class="industry-card fade-in-up">
+                    <div class="industry-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Automotive Manufacturing</h3>
+                    <p class="industry-description">Quality control and safety compliance for automotive parts and assembly lines</p>
+                </div>
+                
+                <div class="industry-card fade-in-up">
+                    <div class="industry-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Electronics Assembly</h3>
+                    <p class="industry-description">Precision monitoring for electronic component manufacturing and assembly</p>
+                </div>
+                
+                <div class="industry-card fade-in-up">
+                    <div class="industry-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Food & Beverage Production</h3>
+                    <p class="industry-description">Hygiene and safety compliance for food processing facilities</p>
+                </div>
+                
+                <div class="industry-card fade-in-up">
+                    <div class="industry-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Medical Device Manufacturing</h3>
+                    <p class="industry-description">Regulatory compliance and quality assurance for medical device production</p>
+                </div>
+                
+                <div class="industry-card fade-in-up">
+                    <div class="industry-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M8 9l4-4 4 4m0 6l-4 4-4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Aerospace Components</h3>
+                    <p class="industry-description">Critical safety monitoring for aerospace manufacturing and assembly</p>
+                </div>
+                
+                <div class="industry-card fade-in-up">
+                    <div class="industry-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">General Manufacturing</h3>
+                    <p class="industry-description">Comprehensive compliance solutions for diverse manufacturing operations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title fade-in-up">Ready to Transform Your Factory Floor?</h2>
+                <p class="cta-subtitle fade-in-up">
+                    Join forward-thinking manufacturers who are turning compliance from a cost center into a competitive advantage
+                </p>
+                <div class="fade-in-up">
+                    <a href="https://cal.com/founders-sift-qcxymj" class="btn btn-primary btn-large">
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                            <path d="m9 16 2 2 4-4"></path>
+                        </svg>
+                        Book Your Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/SIFT_logo.png" alt="SIFT">
+                        <span>SIFT</span>
+                    </div>
+                    <p class="footer-description">
+                        Enterprise-grade safety and compliance tools for small and mid-sized manufacturers
+                    </p>
+                </div>
+                
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="solutions.html">Solutions</a></li>
+                            <li><a href="index.html#features">Features</a></li>
+                            <li><a href="https://cal.com/founders-sift-qcxymj">Book Demo</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">Support</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>SIFTAI TECHNOLOGIES, LLC, 2025</p>
+            </div>
+        </div>
     </footer>
-  </div>
 
-  <script>
-    // Countdown Timer with Animation
-    const launchDate = new Date('2025-06-01T00:00:00');
-    
-    function animateValue(element, start, end, duration) {
-      if (isNaN(start)) start = 0;
-      if (isNaN(end)) end = 0;
-      
-      const range = end - start;
-      const increment = range / (duration / 16);
-      let current = start;
-      
-      const animate = () => {
-        current += increment;
-        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
-          element.textContent = end;
-          return;
-        }
-        element.textContent = Math.round(current);
-        requestAnimationFrame(animate);
-      };
-      
-      animate();
-    }
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = launchDate - now;
-      
-      if (diff <= 0) {
-        document.querySelector('.countdown-container').innerHTML = '<h2>We are live!</h2>';
-        return;
-      }
-      
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      
-      const daysElement = document.getElementById('days');
-      const hoursElement = document.getElementById('hours');
-      const minutesElement = document.getElementById('minutes');
-      const secondsElement = document.getElementById('seconds');
-      
-      const currentDays = parseInt(daysElement.textContent) || 0;
-      const currentHours = parseInt(hoursElement.textContent) || 0;
-      const currentMinutes = parseInt(minutesElement.textContent) || 0;
-      const currentSeconds = parseInt(secondsElement.textContent) || 0;
-      
-      if (currentDays !== days) animateValue(daysElement, currentDays, days, 500);
-      if (currentHours !== hours) animateValue(hoursElement, currentHours, hours, 500);
-      if (currentMinutes !== minutes) animateValue(minutesElement, currentMinutes, minutes, 500);
-      if (currentSeconds !== seconds) animateValue(secondsElement, currentSeconds, seconds, 500);
-    }
-    
-    // Initialize countdown immediately
-    updateCountdown();
-    // Update countdown every second
-    setInterval(updateCountdown, 1000);
-  </script>
-
-  <script>
-    // Background Animation
-    const canvas = document.getElementById('bgCanvas');
-    const ctx = canvas.getContext('2d');
-    let width, height;
-
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
-
-    window.addEventListener('resize', resize);
-    resize();
-
-    const nodes = Array.from({ length: 50 }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3
-    }));
-
-    function draw() {
-      ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--cream');
-      ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--tan');
-
-      for (let i = 0; i < nodes.length; i++) {
-        const a = nodes[i];
-        ctx.beginPath();
-        ctx.arc(a.x, a.y, 2, 0, Math.PI * 2);
-        ctx.fill();
-
-        for (let j = i + 1; j < nodes.length; j++) {
-          const b = nodes[j];
-          const dist = Math.hypot(a.x - b.x, a.y - b.y);
-          if (dist < 100) {
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-
-        a.x += a.vx;
-        a.y += a.vy;
-
-        if (a.x < 0 || a.x > width) a.vx *= -1;
-        if (a.y < 0 || a.y > height) a.vy *= -1;
-      }
-
-      requestAnimationFrame(draw);
-    }
-
-    draw();
-  </script>
-
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>
