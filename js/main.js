@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeIntersectionObserver();
     initializeMicroInteractions();
     
+    // Set initial active navigation state
+    updateActiveNavLink();
+    
     console.log('🚀 SIFT website initialized with Y Combinator quality interactions');
 });
 
@@ -32,9 +35,6 @@ function initializeHeader() {
         } else {
             header.classList.remove('scrolled');
         }
-        
-        // Update active navigation link based on scroll position
-        updateActiveNavLink();
         
         lastScrollY = scrollY;
         ticking = false;
@@ -152,29 +152,34 @@ function initializeSmoothScrolling() {
 }
 
 /**
- * Update active navigation link based on scroll position
+ * Update active navigation link based on current page
  */
 function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    const headerHeight = document.getElementById('header').offsetHeight;
-    
-    let currentSection = '';
-    
-    sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= headerHeight + 100 && rect.bottom >= headerHeight + 100) {
-            currentSection = section.id;
-        }
-    });
+    const currentPath = window.location.pathname;
+    const currentPage = currentPath.split('/').pop() || 'index.html';
     
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (currentSection === 'features' && link.textContent === 'Home') {
-            link.classList.add('active');
-        } else if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
-        } else if (currentSection === '' && link.getAttribute('href') === 'index.html') {
+        
+        // Get the link's target page
+        const linkHref = link.getAttribute('href');
+        let linkPage = '';
+        
+        if (linkHref.startsWith('#')) {
+            // For anchor links, they belong to index.html
+            linkPage = 'index.html';
+        } else {
+            // For regular page links
+            linkPage = linkHref.split('/').pop();
+        }
+        
+        // Special handling for home page
+        if (linkPage === 'index.html' && link.textContent.trim() === 'Home') {
+            if (currentPage === 'index.html' || currentPage === '') {
+                link.classList.add('active');
+            }
+        } else if (linkPage === currentPage) {
             link.classList.add('active');
         }
     });
