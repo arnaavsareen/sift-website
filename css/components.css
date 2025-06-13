@@ -1,5 +1,32 @@
 /* SIFT Components CSS - Simplified for Centered Layout */
 
+/* Lucide Icons Styling */
+[data-lucide] {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+
+.feature-icon [data-lucide] {
+    width: 24px;
+    height: 24px;
+}
+
+.industry-icon [data-lucide] {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-icon[data-lucide] {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-large .btn-icon[data-lucide] {
+    width: 20px;
+    height: 20px;
+}
+
 /* Accordion Component */
 .accordion {
     max-width: 600px;
@@ -33,11 +60,11 @@
 }
 
 .accordion-header:hover {
-    background-color: var(--bg-subtle);
+    background-color: var(--brand-off-white);
 }
 
 .accordion-header.active {
-    background-color: var(--bg-subtle);
+    background-color: var(--brand-off-white);
 }
 
 .accordion-icon {
@@ -162,7 +189,7 @@
 }
 
 .modal-close:hover {
-    background-color: var(--bg-subtle);
+    background-color: var(--brand-off-white);
 }
 
 .modal-body {
@@ -181,7 +208,7 @@
 .progress {
     width: 100%;
     height: 8px;
-    background-color: var(--bg-subtle);
+    background-color: var(--brand-off-white);
     border-radius: var(--radius-full);
     overflow: hidden;
     max-width: 400px;
@@ -277,7 +304,8 @@
 .contact-item {
     text-align: center;
     padding: var(--space-xl);
-    background-color: var(--bg-subtle);
+    background-color: var(--white);
+    border: 1px solid var(--brand-off-white);
     border-radius: var(--radius-lg);
 }
 
@@ -296,7 +324,7 @@
 }
 
 .contact-icon:hover {
-    background: var(--primary-green);
+    background: var(--brand-accent);
     color: white;
 }
 
@@ -314,7 +342,7 @@
 }
 
 .contact-link:hover {
-    color: var(--secondary-green);
+    color: var(--brand-accent);
 }
 
 .response-time {
@@ -335,7 +363,8 @@
 .team-member {
     text-align: center;
     padding: var(--space-xl);
-    background-color: var(--bg-subtle);
+    background-color: var(--white);
+    border: 1px solid var(--brand-off-white);
     border-radius: var(--radius-lg);
 }
 
