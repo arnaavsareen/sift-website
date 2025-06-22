@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - SIFT</title>
+    <meta name="description" content="Expert insights on EHS, safety culture, compliance, and manufacturing best practices from SIFT AI Technologies.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/SIFT_logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SIFT Blog - EHS and Safety Insights">
+    <meta property="og:description" content="Expert insights on EHS, safety culture, compliance, and manufacturing best practices from SIFT AI Technologies.">
+    <meta property="og:image" content="https://siftaitechnologies.com/images/link-image.png">
+    <meta property="og:url" content="https://siftaitechnologies.com/blog.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SIFT Blog - EHS and Safety Insights">
+    <meta name="twitter:description" content="Expert insights on EHS, safety culture, compliance, and manufacturing best practices.">
+    <meta name="twitter:image" content="https://siftaitechnologies.com/images/link-image.png">
+    
+    <!-- Additional SEO -->
+    <meta name="author" content="SIFT">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://siftaitechnologies.com/blog.html">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <style>
+        /* Blog-specific minimal styles */
+        .blog-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .blog-header {
+            text-align: center;
+            padding: 6rem 0 4rem;
+            border-bottom: 1px solid #eaecf0;
+            margin-bottom: 4rem;
+        }
+
+        .blog-title {
+            font-family: var(--font-family-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .blog-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .article-category {
+            background: var(--primary-green);
+            color: white;
+            padding: 0.375rem 1rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .article-date {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .article-date::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 4px;
+            height: 4px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .article-title {
+            font-family: var(--font-family-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .article-excerpt {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        .article-content {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #374151;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: var(--font-family-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-number {
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .content-block {
+            margin-bottom: 2rem;
+        }
+
+        .insight-block {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-left: 3px solid #374151;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .insight-label {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .insight-text {
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .action-block {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-left: 3px solid var(--primary-green);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .action-label {
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .action-text {
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .conclusion-section {
+            background: white;
+            border: 1px solid var(--primary-green);
+            padding: 3rem;
+            margin: 4rem 0;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+
+        .conclusion-title {
+            font-family: var(--font-family-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .conclusion-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1.125rem;
+        }
+
+        .references-section {
+            margin: 4rem 0;
+            padding: 3rem 0;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .references-title {
+            font-family: var(--font-family-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .references-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .reference-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border: 1px solid #f3f4f6;
+            border-radius: 0.5rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .reference-item:hover {
+            border-color: #d1d5db;
+        }
+
+        .reference-number {
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .reference-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            line-height: 1.5;
+            transition: color 0.2s ease;
+        }
+
+        .reference-link:hover {
+            color: var(--primary-green);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .blog-container {
+                padding: 0 1rem;
+            }
+
+            .blog-header {
+                padding: 4rem 0 3rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .article-date::before {
+                display: none;
+            }
+
+            .section-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .insight-block,
+            .action-block {
+                padding: 1rem;
+            }
+
+            .conclusion-section {
+                padding: 2rem;
+            }
+        }
+
+        /* Remove any existing card styles */
+        .feature-card {
+            background: none;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="images/SIFT_logo.png" alt="SIFT" class="logo-icon">
+                <span class="logo-text">SIFT</span>
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="solutions.html" class="nav-link">Solutions</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <a href="https://cal.com/founders-sift-qcxymj" class="btn btn-primary">
+                <i data-lucide="calendar-check" class="btn-icon"></i>
+                Book a Demo
+            </a>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Blog Content -->
+    <main>
+        <div class="blog-container">
+            <!-- Blog Header -->
+            <header class="blog-header">
+                <h1 class="blog-title">EHS Insights & Best Practices</h1>
+                <p class="blog-subtitle">Expert insights on safety culture, compliance strategies, and manufacturing excellence</p>
+            </header>
+
+            <!-- Featured Article -->
+            <article>
+                <!-- Article Header -->
+                <header class="article-header">
+                    <div class="article-meta">
+                        <span class="article-category">EHS Leadership</span>
+                        <time class="article-date" datetime="2025-06-22">June 22, 2025</time>
+                    </div>
+                    <h2 class="article-title">Creating a Culture of Safety: What EHS Leaders Aren't Hearing Enough</h2>
+                    <p class="article-excerpt">Building a culture of safety is a familiar mandate for EHS professionals, but many struggle to convince leadership and management to take EHS seriously. The task is not easy. Here's what the latest evidence and global best practices say you should focus on.</p>
+                </header>
+
+                <!-- Article Content -->
+                <div class="article-content">
+                    <!-- Section 1 -->
+                    <section class="content-section">
+                        <h3 class="section-title">
+                            <span class="section-number">1</span>
+                            Psychological Safety: The Real Foundation
+                        </h3>
+                        
+                        <div class="insight-block">
+                            <div class="insight-label">What's new</div>
+                            <p class="insight-text">The 2025 Global Report on safety culture shows that the biggest predictor of safety outcomes isn't just procedures or training, it's <strong>psychological safety</strong>. This means workers feel genuinely safe to speak up, challenge decisions, and report mistakes without fear of retaliation. In high-hazard industries, incident investigations often reveal that someone saw the warning signs but didn't feel empowered to raise their voice.</p>
+                        </div>
+                        
+                        <div class="action-block">
+                            <div class="action-label">Actionable step</div>
+                            <p class="action-text">Audit your organization's psychological safety. Use anonymous surveys or third-party interviews to measure whether employees feel safe reporting hazards, especially across hierarchies. Make it a KPI for leaders, not just a "soft" value.</p>
+                        </div>
+                    </section>
+
+                    <!-- Section 2 -->
+                    <section class="content-section">
+                        <h3 class="section-title">
+                            <span class="section-number">2</span>
+                            Move Beyond Blame: CAPA, Not Culprits
+                        </h3>
+                        
+                        <div class="insight-block">
+                            <div class="insight-label">What's new</div>
+                            <p class="insight-text">The most effective organizations treat every incident (and near-miss) as a learning opportunity, not a witch hunt. The Corrective Action and Preventive Action (CAPA) process, widely used in pharma and aviation, is being adopted in manufacturing for its ability to drive continuous improvement and transparency.</p>
+                        </div>
+                        
+                        <div class="action-block">
+                            <div class="action-label">Actionable step</div>
+                            <p class="action-text">Implement a CAPA system that is transparent and accessible to all employees. Publicize "lessons learned" from incidents, not just the fact that they happened. This builds trust and accelerates learning.</p>
+                        </div>
+                    </section>
+
+                    <!-- Section 3 -->
+                    <section class="content-section">
+                        <h3 class="section-title">
+                            <span class="section-number">3</span>
+                            Create Teams with a Variety of Experience Levels
+                        </h3>
+                        
+                        <div class="insight-block">
+                            <div class="insight-label">What's new</div>
+                            <p class="insight-text">Recent studies show that teams with different levels of seniority acting together, when well led, are better at surfacing hidden risks and challenging groupthink, which reduces incident rates. Homogeneous teams may be more comfortable, but they're more likely to miss blind spots.</p>
+                        </div>
+                        
+                        <div class="action-block">
+                            <div class="action-label">Actionable step</div>
+                            <p class="action-text">Build safety committees that reflect differences across roles, backgrounds, and experience levels. Provide multilingual training and ensure safety communications are accessible to all, not just the majority group.</p>
+                        </div>
+                    </section>
+
+                    <!-- Section 4 -->
+                    <section class="content-section">
+                        <h3 class="section-title">
+                            <span class="section-number">4</span>
+                            Integrate Psychological Health into Safety Culture
+                        </h3>
+                        
+                        <div class="insight-block">
+                            <div class="insight-label">What's new</div>
+                            <p class="insight-text">Psychological health is now recognized as a core safety issue, not just a wellness perk. Stress, fatigue, and psychosocial hazards directly impact safety performance and incident rates. Top-performing companies are embedding psychological health checks into regular safety audits and training leaders in empathy.</p>
+                        </div>
+                        
+                        <div class="action-block">
+                            <div class="action-label">Actionable step</div>
+                            <p class="action-text">Add psychological health metrics to your safety performance dashboard. Train supervisors to recognize signs of stress and burnout as safety risks and provide confidential support resources.</p>
+                        </div>
+                    </section>
+
+                    <!-- Section 5 -->
+                    <section class="content-section">
+                        <h3 class="section-title">
+                            <span class="section-number">5</span>
+                            Leverage Technology for Real-Time Safety Intelligence
+                        </h3>
+                        
+                        <div class="insight-block">
+                            <div class="insight-label">What's new</div>
+                            <p class="insight-text">AI, predictive analytics, and mobile reporting tools are transforming EHS from reactive to proactive. AI-powered sensors can detect equipment anomalies before failure, and mobile apps empower frontline workers to report hazards instantly.</p>
+                        </div>
+                        
+                        <div class="action-block">
+                            <div class="action-label">Actionable step</div>
+                            <p class="action-text">Deploy real-time monitoring tools and predictive analytics in your facility. Use the data not just for compliance, but to identify emerging risks and intervene before incidents occur.</p>
+                        </div>
+                    </section>
+
+                    <!-- Section 6 -->
+                    <section class="content-section">
+                        <h3 class="section-title">
+                            <span class="section-number">6</span>
+                            Leadership: It's About Influence, Not Just Authority
+                        </h3>
+                        
+                        <div class="insight-block">
+                            <div class="insight-label">What's new</div>
+                            <p class="insight-text">World-class EHS organizations don't just mandate safety, they inspire it. The Campbell Institute's research shows that transformational leadership (inspiring, empowering, and recognizing safe behaviors) consistently outperforms transactional approaches (rules and enforcement).</p>
+                        </div>
+                        
+                        <div class="action-block">
+                            <div class="action-label">Actionable step</div>
+                            <p class="action-text">Invest in leadership training that emphasizes communication, trust-building, and recognition. Make EHS a core part of business decisions, not an afterthought.</p>
+                        </div>
+                    </section>
+
+                    <!-- Section 7 -->
+                    <section class="content-section">
+                        <h3 class="section-title">
+                            <span class="section-number">7</span>
+                            Measure What Matters: Leading Indicators and Safety Climate
+                        </h3>
+                        
+                        <div class="insight-block">
+                            <div class="insight-label">What's new</div>
+                            <p class="insight-text">Lagging indicators (injuries, lost-time incidents) tell you what went wrong. Leading indicators (near-miss reports, safety observations, employee engagement) predict where you're headed. The best organizations track both and use safety climate surveys to guide strategy.</p>
+                        </div>
+                        
+                        <div class="action-block">
+                            <div class="action-label">Actionable step</div>
+                            <p class="action-text">Regularly survey your workforce on safety climate. Tie leadership performance reviews to leading safety indicators, not just incident rates.</p>
+                        </div>
+                    </section>
+
+                    <!-- Conclusion -->
+                    <section class="conclusion-section">
+                        <h3 class="conclusion-title">Final Thought</h3>
+                        <p class="conclusion-text">Safety culture isn't merely about ticking boxes or following procedures; it's about nurturing an environment where every person feels secure, respected, and empowered to act. Decades of research underscore the power of psychological safety, the value of different perspectives, and the importance of integrating psychological health support. When these human-centered practices are paired with smart, proactive technologies, safety shifts from a policy to a shared, instinctive reflex.</p>
+                    </section>
+
+                    <!-- References -->
+                    <section class="references-section">
+                        <h3 class="references-title">References</h3>
+                        <div class="references-list">
+                            <div class="reference-item">
+                                <span class="reference-number">1</span>
+                                <a href="https://www.theculturefactor.com/resources/report/global-report-2025" target="_blank" rel="noopener" class="reference-link">The Culture Factor Global Report 2025</a>
+                            </div>
+                            <div class="reference-item">
+                                <span class="reference-number">2</span>
+                                <a href="https://www.ideagen.com/thought-leadership/blog/workplace-safety-strategies" target="_blank" rel="noopener" class="reference-link">Ideagen Safety Culture Strategies</a>
+                            </div>
+                            <div class="reference-item">
+                                <span class="reference-number">3</span>
+                                <a href="https://www.complianceplace.com/ehs-in-2025-whats-next-and-why-it-matters/" target="_blank" rel="noopener" class="reference-link">Compliance Place: EHS in 2025</a>
+                            </div>
+                            <div class="reference-item">
+                                <span class="reference-number">4</span>
+                                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8394037/" target="_blank" rel="noopener" class="reference-link">PMC: Impact of Safety Culture on Performance</a>
+                            </div>
+                            <div class="reference-item">
+                                <span class="reference-number">5</span>
+                                <a href="https://www.serenityehs.com/news/how-to-build-a-proactive-safety-culture" target="_blank" rel="noopener" class="reference-link">Serenity EHS: Proactive Safety Culture</a>
+                            </div>
+                            <div class="reference-item">
+                                <span class="reference-number">6</span>
+                                <a href="https://www.fit2trade.com/2024/01/22/innovative-ehs-strategies-for-proactive-safety-management/" target="_blank" rel="noopener" class="reference-link">Fit2Trade: Innovative EHS Strategies</a>
+                            </div>
+                            <div class="reference-item">
+                                <span class="reference-number">7</span>
+                                <a href="https://www.thecampbellinstitute.org/wp-content/uploads/2017/05/Campbell-Institute-Defining-EHS-Leadership-WP.pdf" target="_blank" rel="noopener" class="reference-link">Campbell Institute: Defining EHS Leadership</a>
+                            </div>
+                            <div class="reference-item">
+                                <span class="reference-number">8</span>
+                                <a href="https://www.ehsinsight.com/blog/how-to-improve-safety-culture-strategies-for-a-better-workplace" target="_blank" rel="noopener" class="reference-link">EHS Insight: Safety Culture Guide</a>
+                            </div>
+                            <div class="reference-item">
+                                <span class="reference-number">9</span>
+                                <a href="https://hsi.com/blog/safety-culture-strategies-2025" target="_blank" rel="noopener" class="reference-link">HSI: Sustainable Safety Culture</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/SIFT_logo.png" alt="SIFT">
+                        <span>SIFT</span>
+                    </div>
+                    <p class="footer-description">
+                        Enterprise-grade safety and compliance tools for small and mid-sized manufacturers
+                    </p>
+                </div>
+                
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="solutions.html">Solutions</a></li>
+                            <li><a href="index.html#features">Features</a></li>
+                            <li><a href="https://cal.com/founders-sift-qcxymj">Book Demo</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Get in Touch</h4>
+                        <ul>
+                            <li><a href="mailto:founders@siftai.in">founders@siftai.in</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    
+    <!-- Initialize Lucide Icons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
