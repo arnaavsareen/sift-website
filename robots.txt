@@ -1,0 +1,42 @@
+# Robots.txt for siftaitechnologies.com
+# Allow all crawlers
+
+User-agent: *
+Allow: /
+Disallow: /images/
+Disallow: /js/
+Disallow: /css/
+
+# Sitemap location
+Sitemap: https://siftaitechnologies.com/sitemap.xml
+
+# Crawl delay (optional - uncomment if needed)
+# Crawl-delay: 1
+
+# Specific directives for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Applebot
+Allow: /
