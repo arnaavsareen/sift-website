@@ -372,6 +372,50 @@
             color: var(--primary-green);
         }
 
+        /* Collapsible sections */
+        .sidebar-toggle {
+            display: none;
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .sidebar-title-collapsible {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .sidebar-title-collapsible .sidebar-title {
+            margin-bottom: 0;
+        }
+
+        .sidebar-toggle-icon {
+            transition: transform 0.2s ease;
+            color: var(--text-secondary);
+            width: 20px;
+            height: 20px;
+        }
+
+        .sidebar-toggle-icon.expanded {
+            transform: rotate(180deg);
+        }
+
+        .sidebar-content {
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            overflow: hidden;
+        }
+
+        .sidebar-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            padding-top: 0;
+        }
+
         /* Responsive design */
         @media (max-width: 768px) {
             .blog-container {
@@ -382,11 +426,63 @@
                 width: 100%;
                 position: static;
                 order: -1;
-                margin-bottom: 2rem;
+                margin-bottom: 0.5rem;
+                margin-top: 6rem;
+                padding-top: 1rem;
             }
 
             .sidebar-section {
                 margin-bottom: 1rem;
+            }
+
+            .sidebar-toggle {
+                display: block;
+            }
+
+            .sidebar-title-desktop {
+                display: none;
+            }
+
+            .sidebar-content {
+                max-height: 200px;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            .sidebar-content.collapsed {
+                max-height: 0;
+                opacity: 0;
+                margin-top: 0;
+                padding-bottom: 0;
+                overflow: hidden;
+            }
+
+            .sidebar-content:not(.collapsed) {
+                border-radius: 0.5rem;
+                background: #fafafa;
+                padding: 0.5rem;
+            }
+
+            /* Custom scrollbar styling for mobile */
+            .sidebar-content::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            .sidebar-content::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            .sidebar-content::-webkit-scrollbar-thumb {
+                background: var(--primary-green);
+                border-radius: 2px;
+            }
+
+            .sidebar-content::-webkit-scrollbar-thumb:hover {
+                background: #2d5a3d;
+            }
+
+            .blog-header {
+                padding: 1rem 0 2rem;
             }
         }
 
@@ -469,46 +565,73 @@
             <!-- Sidebar -->
             <aside class="blog-sidebar">
                 <div class="sidebar-section">
-                    <h3 class="sidebar-title">Recent Posts</h3>
-                    <nav aria-label="Blog posts">
-                        <ul class="blog-nav-list">
-                            <li class="blog-nav-item">
-                                <a href="blog-post-2.html" class="blog-nav-link">
-                                    Essential Heat Safety Advice for U.S. Employers
-                                    <span class="blog-nav-date">June 23, 2025</span>
-                                </a>
-                            </li>
-                            <li class="blog-nav-item">
-                                <a href="blog-post-1.html" class="blog-nav-link active">
-                                    Creating a Culture of Safety: What EHS Leaders Aren't Hearing Enough
-                                    <span class="blog-nav-date">June 22, 2025</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <button class="sidebar-toggle" onclick="toggleSidebar('recent-posts')">
+                        <div class="sidebar-title-collapsible">
+                            <h3 class="sidebar-title">Recent Posts</h3>
+                            <i data-lucide="chevron-down" class="sidebar-toggle-icon" id="recent-posts-icon"></i>
+                        </div>
+                    </button>
+                    <h3 class="sidebar-title sidebar-title-desktop">Recent Posts</h3>
+                    <div class="sidebar-content" id="recent-posts-content">
+                        <nav aria-label="Blog posts">
+                            <ul class="blog-nav-list">
+                                <li class="blog-nav-item">
+                                    <a href="blog-post-3.html" class="blog-nav-link">
+                                        A New Blueprint for Safety Leadership
+                                        <span class="blog-nav-date">June 28, 2025</span>
+                                    </a>
+                                </li>
+                                <li class="blog-nav-item">
+                                    <a href="blog-post-2.html" class="blog-nav-link">
+                                        Essential Heat Safety Advice for U.S. Employers
+                                        <span class="blog-nav-date">June 23, 2025</span>
+                                    </a>
+                                </li>
+                                <li class="blog-nav-item">
+                                    <a href="blog-post-1.html" class="blog-nav-link active">
+                                        Creating a Culture of Safety: What EHS Leaders Aren't Hearing Enough
+                                        <span class="blog-nav-date">June 22, 2025</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
 
                 <div class="sidebar-section">
-                    <h3 class="sidebar-title">Topics</h3>
-                    <nav aria-label="Blog topics">
-                        <ul class="blog-nav-list">
-                            <li class="blog-nav-item">
-                                <a href="blog.html?topic=compliance" class="blog-nav-link">
-                                    OSHA Compliance
-                                </a>
-                            </li>
-                            <li class="blog-nav-item">
-                                <a href="blog.html?topic=safety-culture" class="blog-nav-link">
-                                    Safety Culture
-                                </a>
-                            </li>
-                            <li class="blog-nav-item">
-                                <a href="blog.html?topic=regulations" class="blog-nav-link">
-                                    Regulations & Updates
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <button class="sidebar-toggle" onclick="toggleSidebar('topics')">
+                        <div class="sidebar-title-collapsible">
+                            <h3 class="sidebar-title">Topics</h3>
+                            <i data-lucide="chevron-down" class="sidebar-toggle-icon" id="topics-icon"></i>
+                        </div>
+                    </button>
+                    <h3 class="sidebar-title sidebar-title-desktop">Topics</h3>
+                    <div class="sidebar-content" id="topics-content">
+                        <nav aria-label="Blog topics">
+                            <ul class="blog-nav-list">
+                                <li class="blog-nav-item">
+                                    <a href="blog.html?topic=safety-leadership" class="blog-nav-link">
+                                        Safety Leadership
+                                    </a>
+                                </li>
+                                <li class="blog-nav-item">
+                                    <a href="blog.html?topic=compliance" class="blog-nav-link">
+                                        OSHA Compliance
+                                    </a>
+                                </li>
+                                <li class="blog-nav-item">
+                                    <a href="blog.html?topic=safety-culture" class="blog-nav-link">
+                                        Safety Culture
+                                    </a>
+                                </li>
+                                <li class="blog-nav-item">
+                                    <a href="blog.html?topic=regulations" class="blog-nav-link">
+                                        Regulations & Updates
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </aside>
 
@@ -766,6 +889,44 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             lucide.createIcons();
+        });
+
+        // Sidebar toggle functionality
+        function toggleSidebar(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const icon = document.getElementById(sectionId + '-icon');
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                icon.classList.add('expanded');
+            } else {
+                content.classList.add('collapsed');
+                icon.classList.remove('expanded');
+            }
+        }
+
+        // Initialize collapsed state on mobile
+        function initializeMobileSidebar() {
+            if (window.innerWidth <= 768) {
+                const contents = document.querySelectorAll('.sidebar-content');
+                const icons = document.querySelectorAll('.sidebar-toggle-icon');
+                
+                contents.forEach(content => {
+                    content.classList.add('collapsed');
+                });
+                
+                icons.forEach(icon => {
+                    icon.classList.remove('expanded');
+                });
+            }
+        }
+
+        // Initialize on load and resize
+        window.addEventListener('resize', initializeMobileSidebar);
+        
+        // Initialize mobile sidebar after DOM and icons are loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(initializeMobileSidebar, 100); // Small delay to ensure icons are rendered
         });
     </script>
 </body>
