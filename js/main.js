@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollAnimations();
     initializeIntersectionObserver();
     initializeMicroInteractions();
+    initializeSectorCycle();
     
     // Set initial active navigation state
     updateActiveNavLink();
@@ -71,9 +72,9 @@ function initializeMobileMenu() {
         }
     });
     
-    // Close menu when clicking on a link
+    // Close menu when clicking on a link (but not dropdown triggers)
     navMenu.addEventListener('click', function(e) {
-        if (e.target.classList.contains('nav-link')) {
+        if (e.target.classList.contains('nav-link') && !e.target.classList.contains('dropdown-trigger')) {
             closeMobileMenu();
         }
     });
@@ -122,6 +123,37 @@ function initializeMobileMenu() {
         spans[0].style.transform = '';
         spans[1].style.opacity = '';
         spans[2].style.transform = '';
+    }
+
+    // Toggle Solutions submenu on mobile
+    const navDropdown = document.querySelector('.nav-dropdown');
+    const dropdownTrigger = document.querySelector('.dropdown-trigger');
+    let dropdownOpen = false;
+    
+    if (navDropdown && dropdownTrigger) {
+        dropdownTrigger.addEventListener('click', function(e) {
+            // Only toggle on mobile
+            if (window.innerWidth <= 1023) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (!dropdownOpen) {
+                    navDropdown.classList.add('active');
+                    dropdownOpen = true;
+                } else {
+                    navDropdown.classList.remove('active');
+                    dropdownOpen = false;
+                }
+            }
+        });
+        
+        // Prevent dropdown from closing when clicking inside it
+        const dropdownMenu = navDropdown.querySelector('.dropdown-menu');
+        if (dropdownMenu) {
+            dropdownMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
     }
 }
 
@@ -363,8 +395,6 @@ function createRippleEffect(event, element) {
     }, 600);
 }
 
-
-
 /**
  * Analytics and tracking utilities
  */
@@ -580,3 +610,65 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
+
+function initializeSectorCycle() {
+    const sectors = [
+        'Compliance',
+        'Audit',
+        'EHS',
+        'Safety',
+        'Training',
+    ];
+    const el = document.querySelector('.sector-cycle');
+    if (!el) return;
+    let idx = 0;
+    let typingSpeed = 95;
+    let pauseAfterType = 1200;
+    let pauseAfterDelete = 400;
+
+    function typeWord(word, cb) {
+        let i = 0;
+        el.classList.remove('typed-complete', 'sector-cycle-crossfade', 'cursor-blink');
+        el.classList.add('cursor-solid');
+        function type() {
+            el.textContent = word.slice(0, i);
+            if (i <= word.length) {
+                i++;
+                setTimeout(type, typingSpeed);
+            } else {
+                el.classList.remove('cursor-solid');
+                el.classList.add('typed-complete', 'cursor-blink');
+                setTimeout(cb, pauseAfterType);
+            }
+        }
+        type();
+    }
+
+    function deleteWord(cb) {
+        let word = el.textContent;
+        let i = word.length;
+        el.classList.remove('typed-complete', 'cursor-blink');
+        el.classList.add('cursor-solid', 'sector-cycle-crossfade');
+        function del() {
+            el.textContent = word.slice(0, i);
+            if (i > 0) {
+                i--;
+                setTimeout(del, typingSpeed);
+            } else {
+                el.classList.remove('cursor-solid', 'sector-cycle-crossfade');
+                setTimeout(cb, pauseAfterDelete);
+            }
+        }
+        del();
+    }
+
+    function loop() {
+        typeWord(sectors[idx], () => {
+            deleteWord(() => {
+                idx = (idx + 1) % sectors.length;
+                loop();
+            });
+        });
+    }
+    loop();
+}

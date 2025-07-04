@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupTypingEffects();
     setupParallaxEffects();
     setupManufacturingAnimations();
+    setupFAQ();
 });
 
 // Initialize all animations
@@ -56,6 +57,9 @@ function initializeAnimations() {
         element.style.transform = getInitialTransform(element);
         element.style.transition = 'all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)';
     });
+    
+    // Initialize scroll reveal for hero video
+    setupScrollReveal();
 }
 
 // Get initial transform based on animation class
@@ -196,6 +200,35 @@ function setupStaggeredAnimations() {
         }, observerOptions);
         
         gridObserver.observe(grid);
+    });
+}
+
+// Scroll reveal for hero video - Morphik Style
+function setupScrollReveal() {
+    const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+    
+    if (scrollRevealElements.length === 0) return;
+    
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                
+                // Simple, clean entrance animation
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, 100);
+                
+                scrollObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    scrollRevealElements.forEach(element => {
+        scrollObserver.observe(element);
     });
 }
 
@@ -581,3 +614,43 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start the loading sequence
     setTimeout(startLoadingSequence, 300);
 });
+
+// FAQ Functionality
+function setupFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-icon');
+        
+        if (question && answer) {
+            question.addEventListener('click', () => {
+                // Close other FAQ items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        const otherQuestion = otherItem.querySelector('.faq-question');
+                        const otherAnswer = otherItem.querySelector('.faq-answer');
+                        const otherIcon = otherItem.querySelector('.faq-icon');
+                        
+                        if (otherQuestion && otherAnswer) {
+                            otherQuestion.classList.remove('active');
+                            otherAnswer.classList.remove('active');
+                        }
+                    }
+                });
+                
+                // Toggle current FAQ item
+                const isActive = question.classList.contains('active');
+                
+                if (isActive) {
+                    question.classList.remove('active');
+                    answer.classList.remove('active');
+                } else {
+                    question.classList.add('active');
+                    answer.classList.add('active');
+                }
+            });
+        }
+    });
+}
