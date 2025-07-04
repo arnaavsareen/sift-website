@@ -757,6 +757,14 @@
     background-color: var(--white);
     border: 1px solid var(--brand-off-white);
     border-radius: var(--radius-lg);
+    box-shadow: 0 4px 16px rgba(42, 89, 57, 0.10), 0 2px 8px rgba(42, 89, 57, 0.06);
+    transition: all 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(42, 89, 57, 0.15), 0 4px 12px rgba(42, 89, 57, 0.08);
+    border-color: var(--primary-green);
 }
 
 .team-avatar {
@@ -1212,7 +1220,7 @@
     transition: box-shadow 0.38s cubic-bezier(.22,1.2,.36,1), transform 0.38s cubic-bezier(.22,1.2,.36,1);
     position: relative;
     max-width: 400px;
-    box-shadow: 0 4px 24px rgba(42, 89, 57, 0.08);
+    box-shadow: 0 6px 24px rgba(42, 89, 57, 0.12), 0 3px 12px rgba(42, 89, 57, 0.08);
     will-change: transform, box-shadow;
     text-align: center;
     animation: cardBreathe 6s ease-in-out infinite alternate;
@@ -1220,10 +1228,10 @@
 
 @keyframes cardBreathe {
     0% {
-        box-shadow: 0 4px 24px rgba(42, 89, 57, 0.08);
+        box-shadow: 0 6px 24px rgba(42, 89, 57, 0.12), 0 3px 12px rgba(42, 89, 57, 0.08);
     }
     100% {
-        box-shadow: 0 12px 36px rgba(42, 89, 57, 0.13);
+        box-shadow: 0 12px 36px rgba(42, 89, 57, 0.16), 0 6px 18px rgba(42, 89, 57, 0.10);
     }
 }
 
@@ -1793,6 +1801,7 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 16px rgba(42, 89, 57, 0.10), 0 2px 8px rgba(42, 89, 57, 0.06);
 }
 
 .stat-card::before {
@@ -1925,6 +1934,7 @@
     margin-bottom: 16px;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: 0 3px 12px rgba(42, 89, 57, 0.08), 0 1px 6px rgba(42, 89, 57, 0.04);
 }
 
 .faq-item:hover {

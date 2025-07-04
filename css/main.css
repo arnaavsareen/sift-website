@@ -524,16 +524,18 @@ p {
     transition: all var(--transition-base);
     height: 100%;
     position: relative;
+    /* Enhanced default shadow for better prominence */
+    box-shadow: 0 4px 16px rgba(42, 89, 57, 0.12), 0 2px 8px rgba(42, 89, 57, 0.08);
     animation: cardBreathe 6s ease-in-out infinite alternate;
 }
 
-/* Subtle Card Breathing Animation */
+/* Enhanced Card Breathing Animation */
 @keyframes cardBreathe {
     0% {
-        box-shadow: 0 2px 8px rgba(42, 89, 57, 0.06);
+        box-shadow: 0 4px 16px rgba(42, 89, 57, 0.12), 0 2px 8px rgba(42, 89, 57, 0.08);
     }
     100% {
-        box-shadow: 0 4px 16px rgba(42, 89, 57, 0.08);
+        box-shadow: 0 8px 24px rgba(42, 89, 57, 0.15), 0 4px 12px rgba(42, 89, 57, 0.10);
     }
 }
 
@@ -614,6 +616,8 @@ p {
     transition: all var(--transition-base);
     text-align: center;
     height: 100%;
+    /* Enhanced default shadow for better prominence */
+    box-shadow: 0 4px 16px rgba(42, 89, 57, 0.12), 0 2px 8px rgba(42, 89, 57, 0.08);
     animation: cardBreathe 7s ease-in-out infinite alternate;
 }
 
@@ -1573,7 +1577,7 @@ a {
   text-decoration: none;
   color: var(--text-primary);
   font-size: inherit;
-  font-weight: inherit;
+  font-weight: 500;
   background: none;
   border: none;
   outline: none;
