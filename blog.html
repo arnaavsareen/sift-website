@@ -51,21 +51,27 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-dropdown">
-                    <a href="#" class="nav-link dropdown-trigger">
+                    <a href="#" class="nav-link dropdown-trigger" aria-expanded="false">
                         Solutions
                     </a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu mobile-submenu">
                         <div class="dropdown-content">
-                            <a href="#" class="dropdown-item">
+                            <a href="research.html" class="dropdown-item">
                                 <div class="dropdown-item-content">
-                                    <div class="dropdown-item-title">EHS</div>
-                                    <div class="dropdown-item-description">Environmental Health & Safety management</div>
+                                    <div class="dropdown-item-title">Research</div>
+                                    <div class="dropdown-item-description">AI-powered regulatory research & analysis</div>
                                 </div>
                             </a>
-                            <a href="#" class="dropdown-item">
+                            <a href="jha-generation.html" class="dropdown-item">
                                 <div class="dropdown-item-content">
-                                    <div class="dropdown-item-title">Compliance</div>
-                                    <div class="dropdown-item-description">Regulatory compliance & audit management</div>
+                                    <div class="dropdown-item-title">JHA Generation</div>
+                                    <div class="dropdown-item-description">Automated Job Hazard Analysis creation</div>
+                                </div>
+                            </a>
+                            <a href="incident-reporting.html" class="dropdown-item">
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-title">Incident Reporting</div>
+                                    <div class="dropdown-item-description">Streamlined incident tracking & reporting</div>
                                 </div>
                             </a>
                         </div>
@@ -80,12 +86,6 @@
                 <i data-lucide="calendar-check" class="btn-icon"></i>
                 Book a Demo
             </a>
-            
-            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </nav>
     </header>
 
@@ -104,6 +104,24 @@
         <div class="container">
             <div class="blog-posts-grid">
                 <!-- Featured Post -->
+                <article class="blog-post-card fade-in-up">
+                    <div class="post-meta">
+                        <span class="post-category">Compliance Update</span>
+                        <time class="post-date" datetime="2025-07-05">July 5th, 2025</time>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="blog-post-4.html">OSHA Renews National Emphasis Program on Amputations in Manufacturing</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        OSHA has officially renewed and updated its National Emphasis Program on Amputations in Manufacturing Industries. Learn what manufacturers need to know and how to stay ahead of the renewed five-year compliance push through 2030.
+                    </p>
+                    <a href="blog-post-4.html" class="read-more-link">
+                        Read Full Article
+                        <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                    </a>
+                </article>
+
+                <!-- Regular Post -->
                 <article class="blog-post-card fade-in-up">
                     <div class="post-meta">
                         <span class="post-category">Safety Leadership</span>
@@ -203,7 +221,7 @@
                     <div class="footer-column">
                         <h4>Product</h4>
                         <ul>
-                            <li><a href="index.html#features">Features</a></li>
+                            <li><a href="index.html">Features</a></li>
                             <li><a href="https://cal.com/founders-sift-qcxymj">Book Demo</a></li>
                         </ul>
                     </div>

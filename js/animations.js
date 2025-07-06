@@ -97,29 +97,45 @@ function setupCounterAnimations() {
 
 // Animate counter numbers
 function animateCounter(element) {
-    const target = parseInt(element.textContent.replace(/[^\d]/g, ''));
-    const suffix = element.textContent.replace(/[\d]/g, '');
+    // Match prefix (e.g., $), number (with optional decimal), and suffix (e.g., %, B, hrs)
+    const match = element.textContent.trim().match(/^([^\d\.-]*)([\d,.]+(?:\.\d+)?)(.*)$/);
+    if (!match) return;
+
+    const prefix = match[1] || '';
+    // Remove commas for parsing, keep decimal
+    const numberStr = match[2].replace(/,/g, '');
+    const target = parseFloat(numberStr);
+    const suffix = match[3] || '';
     const duration = 2000;
     const start = 0;
     const startTime = performance.now();
-    
+
     function updateCounter(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        
+
         // Easing function
         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        const current = Math.floor(start + (target - start) * easeOutQuart);
-        
-        element.textContent = current + suffix;
-        
+        const current = start + (target - start) * easeOutQuart;
+
+        // Format number: keep decimals if present in original
+        let formatted;
+        if (numberStr.includes('.')) {
+            formatted = current.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+        } else {
+            formatted = Math.floor(current).toLocaleString();
+        }
+
+        element.textContent = prefix + formatted + suffix;
+
         if (progress < 1) {
             requestAnimationFrame(updateCounter);
         } else {
-            element.textContent = target + suffix;
+            // Final value, formatted
+            element.textContent = prefix + (numberStr.includes('.') ? target.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) : target.toLocaleString()) + suffix;
         }
     }
-    
+
     requestAnimationFrame(updateCounter);
 }
 

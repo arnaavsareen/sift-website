@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIFT Incident Reporting - Streamlined Incident Management | SIFT</title>
+    <meta name="description" content="SIFT Incident Reporting streamlines incident tracking and reporting for manufacturers. Instantly log, manage, and export incident reports for compliance and safety.">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/SIFT_logo.png">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="images/SIFT_logo.png" alt="SIFT" class="logo-icon">
+                <span class="logo-text">SIFT</span>
+            </a>
+            <a href="https://cal.com/founders-sift-qcxymj" class="btn btn-primary header-demo-btn" style="display: none;">
+                <i data-lucide="calendar-check" class="btn-icon"></i>
+                Book a Demo
+            </a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-trigger" aria-expanded="false">
+                        Solutions
+                    </a>
+                    <div class="dropdown-menu mobile-submenu">
+                        <div class="dropdown-content">
+                            <a href="research.html" class="dropdown-item">
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-title">Research</div>
+                                    <div class="dropdown-item-description">AI-powered regulatory research & analysis</div>
+                                </div>
+                            </a>
+                            <a href="jha-generation.html" class="dropdown-item">
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-title">JHA Generation</div>
+                                    <div class="dropdown-item-description">Automated Job Hazard Analysis creation</div>
+                                </div>
+                            </a>
+                            <a href="incident-reporting.html" class="dropdown-item">
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-title">Incident Reporting</div>
+                                    <div class="dropdown-item-description">Streamlined incident tracking & reporting</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <a href="https://cal.com/founders-sift-qcxymj" class="btn btn-primary">
+                <i data-lucide="calendar-check" class="btn-icon"></i>
+                Book a Demo
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main Feature Section -->
+    <section class="section" style="padding: 100px 0 40px;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto 36px auto; text-align: center;">
+                <h1 style="font-size: 2.7rem; font-weight: 700; font-family: var(--font-family-heading); margin-bottom: 18px; letter-spacing: -0.01em; color: var(--text-primary); line-height: 1.1;">
+                    Report and resolve incidents automatically
+                </h1>
+                <p style="font-size: 1.18rem; color: var(--text-secondary); margin-bottom: 0; font-family: var(--font-family-body); max-width: 700px; margin-left: auto; margin-right: auto;">
+                    SIFT Incident Reporting streamlines incident tracking and reporting.
+                </p>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 1200px; margin: 0 auto;">
+                <!-- Left side - Content -->
+                <div class="fade-in-up" style="display: flex; flex-direction: column; justify-content: center; min-width: 320px; max-width: 540px; height: 100%;">
+                    <div style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between; height: 340px; min-height: 220px;">
+                        <div style="display: flex; flex-direction: column; justify-content: center; flex: 1;">
+                            <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px;">
+                                <li style="display: flex; align-items: flex-start;">
+                                    <span style="color: var(--primary-green); font-size: 1.15rem; margin-right: 10px;">•</span>
+                                    <span style="font-size: 1.04rem; color: var(--text-secondary); line-height: 1.35; font-family: var(--font-family-body);"><span style="color: var(--primary-green); font-weight: 600;">Instantly log and track</span> incidents from any device</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start;">
+                                    <span style="color: var(--primary-green); font-size: 1.15rem; margin-right: 10px;">•</span>
+                                    <span style="font-size: 1.04rem; color: var(--text-secondary); line-height: 1.35; font-family: var(--font-family-body);"><span style="color: var(--primary-green); font-weight: 600;">Automated notifications</span> and follow-up tasks</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start;">
+                                    <span style="color: var(--primary-green); font-size: 1.15rem; margin-right: 10px;">•</span>
+                                    <span style="font-size: 1.04rem; color: var(--text-secondary); line-height: 1.35; font-family: var(--font-family-body);"><span style="color: var(--primary-green); font-weight: 600;">Real-time analytics</span> and compliance reporting</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start;">
+                                    <span style="color: var(--primary-green); font-size: 1.15rem; margin-right: 10px;">•</span>
+                                    <span style="font-size: 1.04rem; color: var(--text-secondary); line-height: 1.35; font-family: var(--font-family-body);"><span style="color: var(--primary-green); font-weight: 600;">Exportable, audit-ready incident reports</span> in one click</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="display: flex; justify-content: center; gap: 16px; margin-top: 32px; flex-wrap: wrap;">
+                            <a href="https://cal.com/founders-sift-qcxymj" class="btn btn-primary btn-large">
+                                <i data-lucide="calendar-check" class="btn-icon"></i>
+                                Book a Demo
+                            </a>
+                            <a href="https://www.siftaicompliance.com/incident" class="btn btn-secondary btn-large" style="border: 2px solid var(--primary-green); color: var(--primary-green); background: #fff;">
+                                <i data-lucide="arrow-right" class="btn-icon"></i>
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right side - Video -->
+                <div class="fade-in-up" id="sift-incident-video" style="display: flex; align-items: center; justify-content: center; min-width: 340px; max-width: 720px;">
+                    <video controls loop autoplay muted playsinline style="width: 100%; max-width: 720px; aspect-ratio: 16/9; border-radius: 20px; border: 2px solid #e5e7eb; background: #f8faf9;">
+                        <source src="videos/SIFT Incident.mov" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section" style="padding: 0 0 60px;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 48px;">
+                <h2 class="section-title fade-in-up" style="font-size: 2rem; font-weight: 600; font-family: var(--font-family-heading);">
+                    Incident reporting by the numbers
+                </h2>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; align-items: stretch;">
+                <div class="stat-card fade-in-up" style="background: #fff; border-radius: 16px; border: 1.5px solid #e5e7eb; padding: 40px 36px; min-width: 260px; max-width: 320px; flex: 1 1 260px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div class="stat-number" style="font-size: 2.3rem; font-weight: 700; color: var(--primary-green); margin-bottom: 10px;">3 days</div>
+                    <div class="stat-label" style="font-size: 1.08rem; color: var(--text-primary); font-weight: 500; text-align: center;">Average time to close a workplace incident <br><span style="font-size:0.95em; color:var(--text-secondary);">(Industry average)</span></div>
+                </div>
+                <div class="stat-card fade-in-up" style="background: #fff; border-radius: 16px; border: 1.5px solid #e5e7eb; padding: 40px 36px; min-width: 260px; max-width: 320px; flex: 1 1 260px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div class="stat-number" style="font-size: 2.3rem; font-weight: 700; color: var(--primary-green); margin-bottom: 10px;">$176.5 B</div>
+                    <div class="stat-label" style="font-size: 1.08rem; color: var(--text-primary); font-weight: 500; text-align: center;">Average annual cost of workplace incidents<br><span style="font-size:0.95em; color:var(--text-secondary);">(NSC)</span></div>
+                </div>
+                <div class="stat-card fade-in-up" style="background: #fff; border-radius: 16px; border: 1.5px solid #e5e7eb; padding: 40px 36px; min-width: 260px; max-width: 320px; flex: 1 1 260px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div class="stat-number" style="font-size: 2.3rem; font-weight: 700; color: var(--primary-green); margin-bottom: 10px;">100%</div>
+                    <div class="stat-label" style="font-size: 1.08rem; color: var(--text-primary); font-weight: 500; text-align: center;">Audit-ready, exportable incident reports</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title fade-in-up">Ready to streamline your incident reporting?</h2>
+                <p class="cta-subtitle fade-in-up">
+                    See how SIFT Incident Reporting can help you resolve incidents faster and stay compliant
+                </p>
+                <div class="fade-in-up">
+                    <a href="https://cal.com/founders-sift-qcxymj" class="btn btn-primary btn-large">
+                        <i data-lucide="calendar-check" class="btn-icon"></i>
+                        Book a Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/SIFT_logo.png" alt="SIFT">
+                        <span>SIFT</span>
+                    </div>
+                    <p class="footer-description">
+                        Enterprise-grade safety and compliance tools for small and mid-sized manufacturers
+                    </p>
+                </div>
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="index.html">Features</a></li>
+                            <li><a href="https://cal.com/founders-sift-qcxymj">Book Demo</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Get in Touch</h4>
+                        <ul>
+                            <li><a href="mailto:founders@siftai.in">founders@siftai.in</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    
+    <!-- Initialize Lucide Icons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+
+    <style>
+        /* Mobile responsiveness for the two-column layout */
+        @media (max-width: 1024px) {
+            div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+        }
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 0 !important;
+            }
+            .section:first-of-type {
+                padding-top: 100px !important;
+            }
+            .stat-card {
+                padding: 24px 12px !important;
+            }
+            .stat-number {
+                font-size: 2rem !important;
+            }
+            .btn, .btn-primary, .btn-secondary {
+                font-size: 1rem !important;
+                padding: 12px 18px !important;
+            }
+            /* Center CTA buttons below bullet points */
+            .fade-in-up > div[style*="justify-content: flex-start"] {
+                justify-content: center !important;
+            }
+            .fade-in-up > div[style*="justify-content: flex-start"] a {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+        @media (max-width: 1023px) {
+            /* Hide desktop demo button on mobile */
+            .nav-container > .btn-primary {
+                display: none;
+            }
+            /* Show mobile demo button */
+            .header-demo-btn {
+                display: inline-flex !important;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 2;
+            }
+            /* Position hamburger menu to the right */
+            .mobile-menu-toggle {
+                order: 3;
+                margin-left: auto;
+            }
+            /* Adjust nav container layout */
+            .nav-container {
+                position: relative;
+            }
+        }
+    </style>
+</body>
+</html> 
