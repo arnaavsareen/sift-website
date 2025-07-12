@@ -739,18 +739,21 @@ p {
    Hero Section
    =================================================================== */
 .hero {
-    padding-top: calc(80px + var(--space-20));
-    padding-bottom: var(--space-20);
-    min-height: 90vh;
+    padding-top: calc(80px + var(--space-8));
+    padding-bottom: var(--space-8);
+    min-height: 100vh;
     display: flex;
     align-items: center;
     text-align: center;
-    background: var(--white);
     position: relative;
     overflow: hidden;
+    background-image: url('../images/backgroundhero.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
-/* Flowing Grid Background - Only for Hero Section */
+/* Subtle overlay for optimal text readability */
 .hero::before {
     content: '';
     position: absolute;
@@ -758,17 +761,18 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        linear-gradient(rgba(42, 89, 57, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(42, 89, 57, 0.06) 1px, transparent 1px);
-    background-size: 60px 60px;
-    background-repeat: repeat;
-    pointer-events: none;
-    z-index: 0;
-    animation: gridFlow 60s linear infinite;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.85) 0%,
+        rgba(255, 255, 255, 0.6) 25%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.6) 75%,
+        rgba(255, 255, 255, 0.8) 100%
+    );
+    z-index: 1;
 }
 
-/* Secondary Grid Layer for Added Depth - Only for Hero Section */
+/* Professional depth effect */
 .hero::after {
     content: '';
     position: absolute;
@@ -776,14 +780,176 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        linear-gradient(rgba(65, 123, 95, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(65, 123, 95, 0.03) 1px, transparent 1px);
-    background-size: 120px 120px;
-    background-repeat: repeat;
-    pointer-events: none;
-    z-index: 0;
-    animation: gridFlowReverse 90s linear infinite;
+    background: radial-gradient(
+        circle at center,
+        transparent 0%,
+        rgba(42, 89, 57, 0.02) 40%,
+        rgba(42, 89, 57, 0.04) 80%,
+        rgba(42, 89, 57, 0.06) 100%
+    );
+    z-index: 2;
+}
+
+/* Hero content container */
+.hero .container {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-4);
+    position: relative;
+}
+
+/* Clean fade-in animation */
+.fade-in-up {
+    animation: heroContentFade 0.8s ease-out forwards;
+}
+
+@keyframes heroContentFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Restore original hero title styling */
+.hero-title {
+    font-family: var(--font-family-heading);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: var(--space-6);
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    white-space: nowrap;
+}
+
+.hero-title .text-green {
+    color: var(--primary-green);
+}
+
+/* Hero subtitle styling */
+.hero-subtitle {
+    font-size: var(--text-xl);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-8);
+    max-width: 680px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hero CTA styling */
+.hero-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    margin-top: var(--space-10);
+    position: relative;
+    z-index: 4;
+}
+
+/* Hero video container styling */
+.hero-video-container {
+    position: relative;
+    z-index: 3;
+    margin-top: var(--space-12);
+}
+
+.hero-video-content {
+    position: relative;
+}
+
+.hero-video-content img {
+    border-radius: 18px;
+    max-width: 1200px;
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 8px 32px rgba(42,89,57,0.10);
+}
+
+/* Hero responsive adjustments */
+@media (max-width: 1200px) {
+    .hero {
+        background-position: center top;
+    }
+    
+    .hero-title {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 90vh;
+        padding-top: calc(80px + var(--space-6));
+        background-position: center center;
+    }
+    
+    .hero::before {
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.7) 50%,
+            rgba(255, 255, 255, 0.85) 100%
+        );
+    }
+    
+    .hero-content {
+        padding: var(--space-5) var(--space-3);
+    }
+    
+    .hero-title {
+        white-space: normal;
+    }
+    
+    .hero-video-container {
+        margin-top: var(--space-12);
+    }
+    
+    .hero-video-content img {
+        border-radius: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        min-height: 85vh;
+        padding-top: calc(80px + var(--space-4));
+    }
+    
+    .hero-content {
+        padding: var(--space-4) var(--space-2);
+    }
+    
+    .hero-video-container {
+        margin-top: var(--space-8);
+    }
+    
+    .hero-video-content img {
+        border-radius: 12px;
+    }
+}
+
+/* Clean animations */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in-up {
+        animation: none;
+    }
 }
 
 @keyframes gridFlow {
@@ -802,13 +968,6 @@ p {
     100% {
         transform: translate(-120px, -120px);
     }
-}
-
-.hero-content {
-    max-width: 900px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
 }
 
 .hero-cta {
