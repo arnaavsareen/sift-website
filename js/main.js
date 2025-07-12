@@ -17,6 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
     updateActiveNavLink();
     
     console.log('🚀 SIFT website initialized with Y Combinator quality interactions');
+
+    const track = document.querySelector('.carousel-track');
+    if (track) {
+        track.innerHTML += track.innerHTML;
+    }
 });
 
 /**

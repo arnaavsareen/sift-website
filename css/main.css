@@ -1597,3 +1597,248 @@ a {
 .dropdown-menu {
   transition: all 0.2s ease;
 }
+
+/* ===================================================================
+   Regulations Carousel Section
+   =================================================================== */
+.regulations-carousel-section {
+    position: relative;
+    padding: 0;
+    margin-top: calc(var(--space-16) * -1);
+    background: linear-gradient(180deg, 
+        rgba(248, 255, 254, 0.4) 0%, 
+        var(--brand-off-white) 50%,
+        var(--white) 100%);
+    overflow: hidden;
+    z-index: 10;
+}
+
+.regulations-carousel-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: radial-gradient(ellipse at center top, 
+        rgba(42, 89, 57, 0.03) 0%, 
+        transparent 70%);
+    pointer-events: none;
+}
+
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-10);
+    padding: var(--space-20) 0;
+    position: relative;
+}
+
+.carousel-label {
+    flex-shrink: 0;
+    font-family: var(--font-family);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    position: relative;
+    padding-left: var(--space-2);
+}
+
+.carousel-label::before {
+    content: '';
+    position: absolute;
+    left: calc(var(--space-2) * -1);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 16px;
+    background: var(--primary-green);
+    border-radius: 2px;
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    mask-image: linear-gradient(90deg, 
+        transparent 0%, 
+        black 5%, 
+        black 95%, 
+        transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, 
+        transparent 0%, 
+        black 5%, 
+        black 95%, 
+        transparent 100%);
+}
+
+.carousel-track {
+    display: flex;
+    gap: var(--space-8);
+    animation: scrollSmooth 40s linear infinite;
+    width: fit-content;
+    will-change: transform;
+}
+
+.carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+.regulation-logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 160px;
+    padding: var(--space-5);
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--rounded-xl);
+    position: relative;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.regulation-logo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        transparent 0%, 
+        rgba(42, 89, 57, 0.02) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.regulation-logo:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 
+        0 4px 16px rgba(42, 89, 57, 0.08),
+        0 8px 32px rgba(42, 89, 57, 0.04),
+        0 16px 48px rgba(0, 0, 0, 0.02);
+    border-color: rgba(42, 89, 57, 0.2);
+}
+
+.regulation-logo:hover::before {
+    opacity: 1;
+}
+
+.regulation-logo img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.6) contrast(0.9);
+    transition: all var(--transition-base);
+    position: relative;
+    z-index: 1;
+}
+
+.regulation-logo:hover img {
+    filter: grayscale(0%) opacity(1) contrast(1);
+    transform: scale(1.05);
+}
+
+@keyframes scrollSmooth {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Add breathing animation to logos */
+.regulation-logo:nth-child(odd) {
+    animation: logoBreath 8s ease-in-out infinite;
+}
+
+.regulation-logo:nth-child(even) {
+    animation: logoBreath 8s ease-in-out infinite reverse;
+}
+
+@keyframes logoBreath {
+    0%, 100% {
+        box-shadow: 
+            0 2px 8px rgba(42, 89, 57, 0.06),
+            0 4px 16px rgba(42, 89, 57, 0.03);
+    }
+    50% {
+        box-shadow: 
+            0 4px 12px rgba(42, 89, 57, 0.08),
+            0 8px 24px rgba(42, 89, 57, 0.04);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .carousel-wrapper {
+        gap: var(--space-6);
+        padding: var(--space-16) 0;
+    }
+    
+    .regulation-logo {
+        width: 140px;
+        height: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .regulations-carousel-section {
+        margin-top: calc(var(--space-8) * -1);
+    }
+    
+    .carousel-wrapper {
+        flex-direction: column;
+        gap: var(--space-4);
+        align-items: stretch;
+        padding: var(--space-12) 0;
+    }
+    
+    .carousel-label {
+        font-size: var(--text-xs);
+        text-align: center;
+        padding-left: 0;
+    }
+    
+    .carousel-label::before {
+        display: none;
+    }
+    
+    .carousel-container {
+        width: 100%;
+    }
+    
+    .regulation-logo {
+        width: 120px;
+        height: 60px;
+        padding: var(--space-3);
+    }
+    
+    .carousel-track {
+        gap: var(--space-4);
+        animation-duration: 30s;
+    }
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .carousel-track {
+        animation: none;
+    }
+    
+    .regulation-logo {
+        animation: none;
+    }
+    
+    .regulation-logo:hover {
+        transform: translateY(-2px);
+    }
+}
