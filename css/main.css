@@ -794,6 +794,7 @@ p {
 .hero .container {
     position: relative;
     z-index: 3;
+    pointer-events: none;
 }
 
 .hero-content {
@@ -801,6 +802,7 @@ p {
     margin: 0 auto;
     padding: var(--space-6) var(--space-4);
     position: relative;
+    pointer-events: auto;
 }
 
 /* Clean fade-in animation */
@@ -859,7 +861,31 @@ p {
     gap: var(--space-4);
     margin-top: var(--space-10);
     position: relative;
-    z-index: 4;
+    z-index: 10;
+}
+
+/* Ensure buttons are clickable */
+.hero-cta .btn {
+    position: relative;
+    z-index: 999 !important;
+    pointer-events: auto !important;
+    display: inline-block !important;
+}
+
+/* Force all hero overlays to not interfere with buttons */
+.hero::before,
+.hero::after {
+    pointer-events: none !important;
+}
+
+/* Debug: Ensure buttons are visible and clickable */
+.hero-cta .btn-primary,
+.hero-cta .btn-secondary {
+    position: relative !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
 }
 
 /* Hero video container styling */
@@ -976,6 +1002,9 @@ p {
     align-items: center;
     gap: var(--space-4);
     margin-top: var(--space-10);
+    position: relative !important;
+    z-index: 100 !important;
+    pointer-events: auto !important;
 }
 
 @media (min-width: 640px) {
