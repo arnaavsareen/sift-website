@@ -63,6 +63,98 @@
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Mobile Responsive Styles -->
+    <style>
+        /* Mobile responsiveness for About page */
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: var(--space-24) 0 var(--space-8) 0 !important;
+                margin-top: var(--space-8);
+            }
+            
+            .page-title {
+                font-size: clamp(2rem, 8vw, 2.5rem) !important;
+                margin-bottom: var(--space-4) !important;
+            }
+            
+            .page-subtitle {
+                font-size: 1.125rem !important;
+                padding: 0 var(--space-4);
+            }
+            
+            /* Mission section mobile styles */
+            section[style*="padding: var(--space-12)"] {
+                padding: var(--space-8) 0 var(--space-12) 0 !important;
+            }
+            
+            .container {
+                padding: 0 var(--space-4);
+            }
+            
+            /* Mission content mobile */
+            div[style*="max-width: 900px"] {
+                max-width: 100% !important;
+                padding: 0 var(--space-2);
+            }
+            
+            /* Mission text mobile */
+            div[style*="text-align: left"] {
+                font-size: 1rem !important;
+            }
+            
+            div[style*="text-align: left"] p {
+                margin-bottom: var(--space-4) !important;
+            }
+            
+            div[style*="text-align: left"] p:first-child {
+                font-size: 1.125rem !important;
+            }
+            
+            /* Team section mobile */
+            .team-logos {
+                gap: var(--space-8) !important;
+                padding: 0 var(--space-4);
+            }
+            
+            .team-logo {
+                height: 50px !important;
+                max-width: calc(50% - var(--space-4));
+                object-fit: contain;
+            }
+            
+            /* Team heading mobile */
+            h3[style*="text-transform: uppercase"] {
+                font-size: 0.875rem !important;
+                margin-bottom: var(--space-12) !important;
+                padding: 0 var(--space-4);
+            }
+            
+            /* Mission heading mobile */
+            h2[style*="font-size: 2rem"] {
+                font-size: 1.75rem !important;
+                margin-bottom: var(--space-8) !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .team-logos {
+                gap: var(--space-6) !important;
+            }
+            
+            .team-logo {
+                height: 40px !important;
+            }
+            
+            .page-title {
+                font-size: 2rem !important;
+            }
+            
+            div[style*="text-align: left"] {
+                font-size: 0.95rem !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -120,7 +212,7 @@
     </header>
 
     <!-- Page Hero -->
-    <section class="page-hero">
+    <section class="page-hero" style="padding-bottom: var(--space-12);">
         <div class="container">
             <h1 class="page-title fade-in-up">Rethinking the Way <span class="text-green">EHS</span> Works</h1>
             <p class="page-subtitle fade-in-up">
@@ -129,24 +221,38 @@
         </div>
     </section>
 
-    <!-- Main Story Section -->
-    <section class="section">
+    <!-- Mission Section -->
+    <section style="padding: var(--space-12) 0 var(--space-16) 0;">
         <div class="container">
-            <div class="feature-card fade-in-up" style="max-width: 900px; margin: 0 auto; text-align: left;">
-                <h2 class="feature-title" style="text-align: center; margin-bottom: var(--space-8);">Our Mission</h2>
-                <div style="font-size: 1.125rem; line-height: 1.8; color: var(--text-primary);">
-                    <p style="margin-bottom: var(--space-6);">
-                        <strong>SIFT is rethinking the way EHS works.</strong> We believe that language is far more natural, intuitive, and accessible than clunky legacy software. And that everything from complex regulations to daily checklists should be as simple as having a conversation.
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <h2 style="font-family: var(--font-family-heading); font-size: 2rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-12); letter-spacing: -0.01em;">Our Mission</h2>
+                
+                <div style="text-align: left; font-size: 1.125rem; line-height: 1.7; color: var(--text-primary);">
+                    <p style="margin-bottom: var(--space-6); font-size: 1.25rem; font-weight: 600; color: var(--primary-green);">
+                        EHS shouldn't require a manual.
                     </p>
+                    
                     <p style="margin-bottom: var(--space-6);">
-                        By speaking your language, SIFT removes barriers, streamlines workflows, and puts control back in your team's hands. No more hunting through nested menus or toggling between half a dozen apps: just ask SIFT for a dynamic job hazard analysis, request an SOP for your new work cell, or check the status of training completions and get instant, actionable guidance.
+                        At SIFT, we're transforming environmental, health, and safety management from a bureaucratic burden into a simple conversation. While legacy systems force you to navigate endless menus and juggle multiple apps, SIFT understands plain English and delivers exactly what you need, instantly.
+                    </p>
+                    
+                    <p style="margin-bottom: var(--space-6);">
+                        Need a dynamic job hazard analysis? Just ask. Want to check training compliance across your facility? One question gets you there. From generating SOPs for new equipment to scheduling respirator fit tests, SIFT handles complex EHS tasks through natural dialogue.
+                    </p>
+                    
+                    <p style="margin-bottom: var(--space-6);">
+                        Behind every conversation is our compliance engine, trained on OSHA, EPA, FDA, and industry-specific regulations, paired with real-time monitoring and automated reporting. We don't just simplify EHS management,we make it intelligent, proactive, and accessible to everyone on your team.
+                    </p>
+                    
+                    <p style="margin-bottom: 0; font-weight: 600; color: var(--text-primary);">
+                        No training required. No friction. Just results.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Founders Section -->
+    <!-- Founders Section
     <section class="section bg-subtle">
         <div class="container">
             <div class="section-header">
@@ -161,6 +267,23 @@
                     <p style="margin-bottom: var(--space-6);">
                         SIFT combines a compliance LLM trained on OSHA, EPA, FDA, and beyond with real-time monitoring and automated reporting features. Whether you're tracking fall-protection protocols, scheduling respirator fit tests, or generating JHAs on the fly, our conversational interface puts you in command, without the learning curve.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Team Section -->
+    <section style="padding: var(--space-12) 0; background: white;">
+        <div class="container">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <h3 style="font-family: var(--font-family-heading); font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-16); letter-spacing: 0.15em; text-transform: uppercase;">Built by a world class team</h3>
+                
+                <div class="team-logos" style="display: flex; align-items: center; justify-content: center; gap: var(--space-16); flex-wrap: wrap;">
+                    <img src="images/company-logos/bowers.png" alt="Cornell University" class="team-logo" style="height: 70px; opacity: 0.9; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
+                    <img src="images/company-logos/ASSP.png" alt="Toyota" class="team-logo" style="height: 70px; opacity: 0.9; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
+                    <img src="images/company-logos/NSC.png" alt="Cornell University" class="team-logo" style="height: 70px; opacity: 0.9; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
+                    <img src="images/company-logos/toyota.png" alt="Toyota" class="team-logo" style="height: 70px; opacity: 0.9; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
+                    <img src="images/company-logos/eng.png" alt="Toyota" class="team-logo" style="height: 70px; opacity: 0.9; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
                 </div>
             </div>
         </div>
