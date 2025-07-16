@@ -1,10 +1,10 @@
 # SIFT - AI-Powered Manufacturing Compliance Platform
 
-A modern, responsive website for SIFT's AI-powered compliance monitoring platform designed specifically for small and mid-sized manufacturers. Transform reactive compliance into proactive prevention with enterprise-grade safety and compliance tools.
+A modern, responsive website for SIFT's AI-powered compliance monitoring platform designed specifically for  manufacturers. Transform reactive compliance into proactive prevention with enterprise-grade safety and compliance tools.
 
 ## 🏭 About SIFT
 
-SIFT revolutionizes manufacturing compliance by bringing enterprise-grade AI technology to small and mid-sized manufacturers. Our platform uses computer vision, predictive analytics, and automated documentation to transform compliance from a cost center into a competitive advantage.
+SIFT revolutionizes manufacturing compliance by bringing enterprise-grade AI technology to  manufacturers. Our platform uses computer vision, predictive analytics, and automated documentation to transform compliance from a cost center into a competitive advantage.
 
 ### Core Platform Features
 
