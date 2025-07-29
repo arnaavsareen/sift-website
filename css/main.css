@@ -1871,9 +1871,7 @@ a {
     will-change: transform;
 }
 
-.carousel-container:hover .carousel-track {
-    animation-play-state: paused;
-}
+/* Carousel continues scrolling on hover */
 
 .regulation-logo {
     flex-shrink: 0;

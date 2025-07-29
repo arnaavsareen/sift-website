@@ -1223,7 +1223,7 @@
     position: relative;
 }
 
-.reviews-section::before {
+/* .reviews-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1231,7 +1231,7 @@
     right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, #e5e7eb 20%, #e5e7eb 80%, transparent);
-}
+} */
 
 .reviews-grid {
     display: flex;
@@ -1803,7 +1803,7 @@
     background: #fff !important;
     position: relative;
 }
-
+/* 
 .problem-stats-section::before {
     content: '';
     position: absolute;
@@ -1812,7 +1812,7 @@
     right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(42, 89, 57, 0.2), transparent);
-}
+} */
 
 .stats-grid {
     display: grid;
@@ -2388,9 +2388,7 @@
   background: #fff;
 }
 
-.regulations-carousel:hover .carousel-track {
-  animation-play-state: paused;
-}
+/* Carousel continues scrolling on hover */
 
 @keyframes scrollCarousel {
   0% { transform: translateX(0); }
