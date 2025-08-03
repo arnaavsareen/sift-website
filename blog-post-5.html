@@ -354,12 +354,48 @@
             text-decoration: underline;
         }
 
+        /* Collapsible sections */
         .sidebar-toggle {
             display: none;
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            text-align: left;
         }
 
-        .sidebar-title-mobile {
-            display: none;
+        .sidebar-title-collapsible {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .sidebar-title-collapsible .sidebar-title {
+            margin-bottom: 0;
+        }
+
+        .sidebar-toggle-icon {
+            transition: transform 0.2s ease;
+            color: var(--text-secondary);
+            width: 20px;
+            height: 20px;
+        }
+
+        .sidebar-toggle-icon.expanded {
+            transform: rotate(180deg);
+        }
+
+        .sidebar-content {
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            overflow: hidden;
+        }
+
+        .sidebar-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            padding-top: 0;
         }
 
         .sidebar-title-desktop {
@@ -553,6 +589,12 @@
                 <i data-lucide="calendar-check" class="btn-icon"></i>
                 Book a Demo
             </a>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
     
@@ -561,14 +603,15 @@
         <!-- Sidebar -->
         <aside class="blog-sidebar">
             <div class="sidebar-section">
+                <button class="sidebar-toggle" onclick="toggleSidebar('recent-posts')">
+                    <div class="sidebar-title-collapsible">
+                        <h3 class="sidebar-title">Recent Posts</h3>
+                        <i data-lucide="chevron-down" class="sidebar-toggle-icon" id="recent-posts-icon"></i>
+                    </div>
+                </button>
                 <h3 class="sidebar-title sidebar-title-desktop">Recent Posts</h3>
-                <div class="sidebar-toggle">
-                    <h3 class="sidebar-title sidebar-title-mobile">Recent Posts 
-                        <i data-lucide="chevron-down" style="width: 16px; height: 16px; float: right; margin-top: 2px;"></i>
-                    </h3>
-                </div>
-                <div class="sidebar-content">
-                    <nav>
+                <div class="sidebar-content" id="recent-posts-content">
+                    <nav aria-label="Blog posts">
                         <ul class="blog-nav-list">
                             <li class="blog-nav-item">
                                 <a href="blog-post-6.html" class="blog-nav-link">
@@ -598,28 +641,37 @@
                     </nav>
                 </div>
             </div>
-            
+
             <div class="sidebar-section">
+                <button class="sidebar-toggle" onclick="toggleSidebar('topics')">
+                    <div class="sidebar-title-collapsible">
+                        <h3 class="sidebar-title">Topics</h3>
+                        <i data-lucide="chevron-down" class="sidebar-toggle-icon" id="topics-icon"></i>
+                    </div>
+                </button>
                 <h3 class="sidebar-title sidebar-title-desktop">Topics</h3>
-                <div class="sidebar-toggle">
-                    <h3 class="sidebar-title sidebar-title-mobile">Topics 
-                        <i data-lucide="chevron-down" style="width: 16px; height: 16px; float: right; margin-top: 2px;"></i>
-                    </h3>
-                </div>
-                <div class="sidebar-content">
-                    <nav>
+                <div class="sidebar-content" id="topics-content">
+                    <nav aria-label="Blog topics">
                         <ul class="blog-nav-list">
                             <li class="blog-nav-item">
-                                <a href="#" class="blog-nav-link">Safety Leadership</a>
+                                <a href="blog.html?topic=safety-leadership" class="blog-nav-link">
+                                    Safety Leadership
+                                </a>
                             </li>
                             <li class="blog-nav-item">
-                                <a href="#" class="blog-nav-link">OSHA Compliance</a>
+                                <a href="blog.html?topic=compliance" class="blog-nav-link">
+                                    OSHA Compliance
+                                </a>
                             </li>
                             <li class="blog-nav-item">
-                                <a href="#" class="blog-nav-link">Safety Culture</a>
+                                <a href="blog.html?topic=safety-culture" class="blog-nav-link">
+                                    Safety Culture
+                                </a>
                             </li>
                             <li class="blog-nav-item">
-                                <a href="#" class="blog-nav-link">Regulations & Updates</a>
+                                <a href="blog.html?topic=regulations" class="blog-nav-link">
+                                    Regulations & Updates
+                                </a>
                             </li>
                         </ul>
                     </nav>
@@ -820,36 +872,42 @@
         // Initialize Lucide icons
         lucide.createIcons();
         
-        // Sidebar toggle functionality for mobile
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebarToggles = document.querySelectorAll('.sidebar-toggle');
+        // Sidebar toggle functionality
+        function toggleSidebar(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const icon = document.getElementById(sectionId + '-icon');
             
-            sidebarToggles.forEach(toggle => {
-                toggle.addEventListener('click', function() {
-                    const content = this.nextElementSibling;
-                    content.classList.toggle('collapsed');
-                    
-                    const icon = this.querySelector('[data-lucide="chevron-down"]');
-                    if (content.classList.contains('collapsed')) {
-                        icon.style.transform = 'rotate(-90deg)';
-                    } else {
-                        icon.style.transform = 'rotate(0deg)';
-                    }
-                });
-            });
-            
-            // Start collapsed on mobile
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                icon.classList.add('expanded');
+            } else {
+                content.classList.add('collapsed');
+                icon.classList.remove('expanded');
+            }
+        }
+
+        // Initialize collapsed state on mobile
+        function initializeMobileSidebar() {
             if (window.innerWidth <= 768) {
-                const sidebarContents = document.querySelectorAll('.sidebar-content');
-                sidebarContents.forEach(content => {
+                const contents = document.querySelectorAll('.sidebar-content');
+                const icons = document.querySelectorAll('.sidebar-toggle-icon');
+                
+                contents.forEach(content => {
                     content.classList.add('collapsed');
                 });
                 
-                const icons = document.querySelectorAll('.sidebar-toggle [data-lucide="chevron-down"]');
                 icons.forEach(icon => {
-                    icon.style.transform = 'rotate(-90deg)';
+                    icon.classList.remove('expanded');
                 });
             }
+        }
+
+        // Initialize on load and resize
+        window.addEventListener('resize', initializeMobileSidebar);
+        
+        // Initialize mobile sidebar after DOM and icons are loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(initializeMobileSidebar, 100); // Small delay to ensure icons are rendered
         });
     </script>
 </body>
