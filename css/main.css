@@ -1793,25 +1793,13 @@ a {
     position: relative;
     padding: 0;
     margin-top: calc(var(--space-16) * -1);
-    background: linear-gradient(180deg, 
-        rgba(248, 255, 254, 0.4) 0%, 
-        var(--brand-off-white) 50%,
-        var(--white) 100%);
+    background: #ffffff;
     overflow: hidden;
     z-index: 10;
 }
 
 .regulations-carousel-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    background: radial-gradient(ellipse at center top, 
-        rgba(42, 89, 57, 0.03) 0%, 
-        transparent 70%);
-    pointer-events: none;
+    display: none;
 }
 
 .carousel-wrapper {
@@ -1873,64 +1861,9 @@ a {
 
 /* Carousel continues scrolling on hover */
 
-.regulation-logo {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80px;
-    width: 160px;
-    padding: var(--space-5);
-    background: var(--white);
-    border: 1px solid var(--border-light);
-    border-radius: var(--rounded-xl);
-    position: relative;
-    transition: all var(--transition-base);
-    cursor: pointer;
-    overflow: hidden;
-}
+/* Regulation logo styles removed - using direct img styling */
 
-.regulation-logo::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-        transparent 0%, 
-        rgba(42, 89, 57, 0.02) 100%);
-    opacity: 0;
-    transition: opacity var(--transition-base);
-}
-
-.regulation-logo:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 
-        0 4px 16px rgba(42, 89, 57, 0.08),
-        0 8px 32px rgba(42, 89, 57, 0.04),
-        0 16px 48px rgba(0, 0, 0, 0.02);
-    border-color: rgba(42, 89, 57, 0.2);
-}
-
-.regulation-logo:hover::before {
-    opacity: 1;
-}
-
-.regulation-logo img {
-    max-width: 85%;
-    max-height: 85%;
-    object-fit: contain;
-    filter: grayscale(100%) opacity(0.6) contrast(0.9);
-    transition: all var(--transition-base);
-    position: relative;
-    z-index: 1;
-}
-
-.regulation-logo:hover img {
-    filter: grayscale(0%) opacity(1) contrast(1);
-    transform: scale(1.05);
-}
+/* All regulation-logo styles removed */
 
 @keyframes scrollSmooth {
     0% {
@@ -1941,27 +1874,7 @@ a {
     }
 }
 
-/* Add breathing animation to logos */
-.regulation-logo:nth-child(odd) {
-    animation: logoBreath 8s ease-in-out infinite;
-}
-
-.regulation-logo:nth-child(even) {
-    animation: logoBreath 8s ease-in-out infinite reverse;
-}
-
-@keyframes logoBreath {
-    0%, 100% {
-        box-shadow: 
-            0 2px 8px rgba(42, 89, 57, 0.06),
-            0 4px 16px rgba(42, 89, 57, 0.03);
-    }
-    50% {
-        box-shadow: 
-            0 4px 12px rgba(42, 89, 57, 0.08),
-            0 8px 24px rgba(42, 89, 57, 0.04);
-    }
-}
+/* Breathing animation removed */
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
@@ -2002,11 +1915,7 @@ a {
         width: 100%;
     }
     
-    .regulation-logo {
-        width: 120px;
-        height: 60px;
-        padding: var(--space-3);
-    }
+    /* regulation-logo responsive styles removed */
     
     .carousel-track {
         gap: var(--space-4);
@@ -2020,11 +1929,5 @@ a {
         animation: none;
     }
     
-    .regulation-logo {
-        animation: none;
-    }
-    
-    .regulation-logo:hover {
-        transform: translateY(-2px);
-    }
+    /* regulation-logo reduced motion styles removed */
 }

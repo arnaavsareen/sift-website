@@ -2370,10 +2370,10 @@
   max-width: 180px;
   width: auto;
   object-fit: contain;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(42,89,57,0.06);
-  padding: 12px 28px;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
   margin: 0 12px;
   user-select: none;
   pointer-events: auto;
@@ -2384,8 +2384,8 @@
 /* Remove hover effect */
 .carousel-track img:hover {
   transform: none;
-  box-shadow: 0 2px 8px rgba(42,89,57,0.06);
-  background: #fff;
+  box-shadow: none;
+  background: transparent;
 }
 
 /* Carousel continues scrolling on hover */
@@ -2404,10 +2404,10 @@
   .carousel-track img {
     height: 40px;
     max-width: 100px;
-    padding: 6px 12px;
+    padding: 0;
     margin: 0 4px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(42,89,57,0.06);
+    border-radius: 0;
+    box-shadow: none;
   }
   .regulations-carousel-container {
     gap: 12px;
