@@ -1788,6 +1788,21 @@ a {
         justify-content: center !important;
         text-align: center !important;
     }
+    
+    /* Hide SIFT text in mobile header - keep only the logo icon */
+    .nav-brand {
+        gap: 0;
+    }
+    
+    .nav-brand::after {
+        content: '';
+        display: none;
+    }
+    
+    /* Hide any text content in nav-brand on mobile */
+    .nav-brand > *:not(.logo-icon) {
+        display: none;
+    }
 }
 
 /* Dropdown menu hidden by default */
