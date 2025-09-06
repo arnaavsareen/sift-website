@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industries | SIFT - AI-Powered Safety & Compliance Solutions</title>
+    <meta name="description" content="SIFT provides AI-powered safety and compliance solutions for Mining, Construction, and Energy industries. Streamline EHS management and ensure regulatory compliance.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/SIFT_logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Industries | SIFT - AI Safety & Compliance Solutions">
+    <meta property="og:description" content="Transform safety and compliance across Mining, Construction, and Energy industries with SIFT's AI-powered platform.">
+    <meta property="og:image" content="https://siftaitechnologies.com/images/link-image.png">
+    <meta property="og:url" content="https://siftaitechnologies.com/industries.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            background: white;
+        }
+        
+        .industries-hero {
+            padding: 120px 0 40px 0;
+            text-align: center;
+            background: white;
+        }
+        
+        .industries-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        
+        .industries-hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .industry-section {
+            padding: 40px 0;
+            background: white;
+        }
+        
+        .industry-section:last-of-type {
+            padding-bottom: 60px;
+        }
+        
+        .industry-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .industry-section:nth-child(even) .industry-content {
+            direction: rtl;
+        }
+        
+        .industry-section:nth-child(even) .industry-text {
+            direction: ltr;
+        }
+        
+        .industry-image-container {
+            position: relative;
+            background-color: #ffffff;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .industry-image {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            border-radius: 0;
+            background-color: #ffffff;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            object-fit: contain;
+        }
+        
+        .industry-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .industry-text {
+            padding: 20px 0;
+        }
+        
+        .industry-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+        
+        .industry-badge-icon {
+            width: 16px;
+            height: 16px;
+            color: var(--primary-green);
+        }
+        
+        .industry-badge-text {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .industry-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        
+        .industry-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .industry-points {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .industry-points li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+        
+        .industry-points li:before {
+            content: "";
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-right: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            background-color: var(--primary-green);
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 11 12 14 22 4'%3E%3C/polyline%3E%3Cpath d='M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+            mask-size: 20px;
+        }
+        
+        .industry-divider {
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+            margin: 20px auto;
+        }
+        
+        @media (max-width: 768px) {
+            .industries-hero {
+                padding: 100px 20px 30px 20px;
+            }
+            
+            .industries-hero h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+            
+            .industries-hero p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+            
+            .industry-content {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                padding: 0 20px;
+            }
+            
+            .industry-section {
+                padding: 40px 0;
+            }
+            
+            .industry-section:first-of-type {
+                padding-top: 20px;
+            }
+            
+            .industry-section:nth-child(even) .industry-content {
+                direction: ltr;
+            }
+            
+            .industry-text {
+                padding: 0;
+                order: 2;
+            }
+            
+            .industry-image-container {
+                max-width: 100%;
+                padding: 0;
+                order: 1;
+                margin-bottom: 20px;
+            }
+            
+            .industry-image {
+                max-width: 100%;
+                width: 100%;
+                height: auto;
+            }
+            
+            .industry-title {
+                font-size: 1.75rem;
+                margin-bottom: 12px;
+                line-height: 1.2;
+            }
+            
+            .industry-subtitle {
+                font-size: 1rem;
+                margin-bottom: 20px;
+                line-height: 1.5;
+            }
+            
+            .industry-points {
+                padding-left: 0;
+            }
+            
+            .industry-points li {
+                font-size: 0.9375rem;
+                margin-bottom: 14px;
+                padding-left: 28px;
+            }
+            
+            .industry-points li:before {
+                width: 20px;
+                height: 20px;
+                margin-right: 12px;
+                mask-size: 16px;
+            }
+            
+            .industry-divider {
+                margin: 10px auto;
+                width: 80px;
+            }
+            
+            .container {
+                padding: 0;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .industries-hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .industries-hero p {
+                font-size: 0.9375rem;
+            }
+            
+            .industry-title {
+                font-size: 1.5rem;
+            }
+            
+            .industry-subtitle {
+                font-size: 0.9375rem;
+            }
+            
+            .industry-points li {
+                font-size: 0.875rem;
+            }
+        }
+        
+        
+        .text-green {
+            color: var(--primary-green);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="images/SIFT_logo.png" alt="SIFT" class="logo-icon">
+                <span class="logo-text">SIFT</span>
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-trigger" aria-expanded="false">
+                        Solutions
+                    </a>
+                    <div class="dropdown-menu mobile-submenu">
+                        <div class="dropdown-content">
+                            <a href="research.html" class="dropdown-item">
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-title">Research</div>
+                                    <div class="dropdown-item-description">AI-powered regulatory research & analysis</div>
+                                </div>
+                            </a>
+                            <a href="jha-generation.html" class="dropdown-item">
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-title">JHA Generation</div>
+                                    <div class="dropdown-item-description">Automated Job Hazard Analysis creation</div>
+                                </div>
+                            </a>
+                            <a href="incident-reporting.html" class="dropdown-item">
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-title">Incident Reporting</div>
+                                    <div class="dropdown-item-description">Streamlined incident tracking & reporting</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="industries.html" class="nav-link active">Industries</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <a href="https://cal.com/founders-sift-qcxymj" class="btn btn-primary" target="_blank" rel="noopener">
+                <i data-lucide="calendar-check" class="btn-icon"></i>
+                Book a Demo
+            </a>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="industries-hero">
+        <div class="container">
+            <h1 class="fade-in-up">Industries We <span class="text-green">Serve</span></h1>
+            <p class="fade-in-up">
+                AI-powered safety solutions for regulation dense industries.
+            </p>
+        </div>
+    </section>
+
+    <!-- Construction Industry -->
+    <section class="industry-section">
+        <div class="container">
+            <div class="industry-content fade-in-up">
+                <div class="industry-text">
+                    <h2 class="industry-title">Construction</h2>
+                    <p class="industry-subtitle">
+                        Streamline construction site safety with intelligent OSHA compliance and proactive hazard prevention.
+                    </p>
+                    <ul class="industry-points">
+                        <li>Comprehensive OSHA construction standards compliance</li>
+                        <li>JHA generation for construction site safety</li>
+                        <li>Incident reporting and tracking</li>
+                        <li>Safety training and certification management</li>
+                        <li>Compliance Calendar for OSHA regulations</li>
+                    </ul>
+                </div>
+                <div class="industry-image-container">
+                    <img src="images/industry-icons/Construction.png" alt="Construction Industry Safety Solutions" class="industry-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="industry-divider"></div>
+
+    <!-- Mining Industry -->
+    <section class="industry-section">
+        <div class="container">
+            <div class="industry-content fade-in-up">
+                <div class="industry-image-container">
+                    <img src="images/industry-icons/Mining.png" alt="Mining Industry Safety Solutions" class="industry-image">
+                </div>
+                <div class="industry-text">
+                    <h2 class="industry-title">Mining</h2>
+                    <p class="industry-subtitle">
+                        Transform mining operations with comprehensive safety management and MSHA compliance automation.
+                    </p>
+                    <ul class="industry-points">
+                        <li>Automated MSHA regulatory compliance tracking and reporting</li>
+                        <li>JHA generation for mining site safety</li>
+                        <li>Environmental impact monitoring and mitigation strategies</li>
+                        <li>Digital worker safety training and certification management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="industry-divider"></div>
+
+    <!-- Energy Industry -->
+    <section class="industry-section">
+        <div class="container">
+            <div class="industry-content fade-in-up">
+                <div class="industry-text">
+                    <h2 class="industry-title">Energy</h2>
+                    <p class="industry-subtitle">
+                        Advanced safety solutions for oil, gas, and renewable energy operations with comprehensive process management.
+                    </p>
+                    <ul class="industry-points">
+                        <li>Process safety management with real-time risk assessment</li>
+                        <li>Equipment integrity monitoring using predictive analytics</li>
+                        <li>Emergency response planning and management</li>
+                        <li>Renewable energy facility safety optimization</li>
+                    </ul>
+                </div>
+                <div class="industry-image-container">
+                    <img src="images/industry-icons/Energy.png" alt="Energy Industry Safety Solutions" class="industry-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title fade-in-up">Ready to Transform Your Operations?</h2>
+                <p class="cta-subtitle fade-in-up">
+                    Join industry leaders who trust SIFT to reduce incidents by 40% and cut compliance costs by 60%
+                </p>
+                <div class="fade-in-up">
+                    <a href="https://cal.com/founders-sift-qcxymj" class="btn btn-primary btn-large">
+                        <i data-lucide="calendar-check" class="btn-icon"></i>
+                        Book Your Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/SIFT_logo.png" alt="SIFT">
+                        <span>SIFT</span>
+                    </div>
+                    <p class="footer-description">
+                        Enterprise-grade safety and compliance tools for manufacturers
+                    </p>
+                </div>
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="index.html">Features</a></li>
+                            <li><a href="https://cal.com/founders-sift-qcxymj">Book Demo</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Get in Touch</h4>
+                        <ul>
+                            <li><a href="mailto:founders@siftai.in">founders@siftai.in</a></li>
+                            <li><a href="https://www.linkedin.com/company/gosiftai/" target="_blank" rel="noopener"><i data-lucide="linkedin" style="width: 16px; height: 16px; display: inline; margin-right: 0.5rem;"></i>LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/analytics.js"></script>
+    
+    <!-- Initialize Lucide Icons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

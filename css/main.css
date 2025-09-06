@@ -490,6 +490,13 @@ p {
     .nav-container {
         padding: 0 var(--space-4);
     }
+    /* Center the Book a Demo button at 50vw on mobile */
+    .nav-container .btn-primary {
+        position: absolute;
+        left: 50vw;
+        transform: translateX(-50%);
+        z-index: 10;
+    }
 }
 
 /* ===================================================================
