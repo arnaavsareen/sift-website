@@ -3,8 +3,40 @@
    Exceptional typography, spacing, and components
    =================================================================== */
 
-/* Import Inter and Space Grotesk Font Families */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+/* ===================================================================
+   Switzer Font Family - Custom Font Loading
+   =================================================================== */
+@font-face {
+    font-family: 'Switzer';
+    src: url('../fonts/WEB/fonts/Switzer-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Switzer';
+    src: url('../fonts/WEB/fonts/Switzer-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Switzer';
+    src: url('../fonts/WEB/fonts/Switzer-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Switzer';
+    src: url('../fonts/WEB/fonts/Switzer-Semibold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
 
 /* ===================================================================
    CSS Reset & Base Styles
@@ -15,13 +47,17 @@
     padding: 0;
 }
 
+
+
 /* ===================================================================
    Design System Variables
    =================================================================== */
 :root {
-    /* Typography Scale */
-    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-family-heading: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* Typography Scale - Switzer Font Family */
+    --font-family: 'Switzer', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-family-heading: 'Switzer', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    /* Switzer-Optimized Typography Scale */
     --text-xs: 0.75rem;      /* 12px */
     --text-sm: 0.875rem;     /* 14px */
     --text-base: 1rem;       /* 16px */
