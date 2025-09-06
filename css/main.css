@@ -1754,7 +1754,6 @@ a {
         pointer-events: all;
         min-width: auto;
         margin-top: 8px;
-        margin-left: 16px;
     }
     
     .dropdown-menu::before {
@@ -1783,6 +1782,11 @@ a {
     /* Remove underline effect on mobile */
     .dropdown-trigger::before {
         display: none;
+    }
+
+    .dropdown-trigger {
+        justify-content: center !important;
+        text-align: center !important;
     }
 }
 
